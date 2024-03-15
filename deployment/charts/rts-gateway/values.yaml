@@ -1,0 +1,122 @@
+# Default values for rts-gateway.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+
+ingress:
+  enabled: true
+  className: ""
+  annotations:
+    nginx.ingress.kubernetes.io/auth-signin: http://rts.local/oauth2/start?rd=$escaped_request_uri
+    nginx.ingress.kubernetes.io/auth-url: http://rts.local/oauth2/auth
+    nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "64k"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      auth_request_set $name_upstream_1 $upstream_cookie__oauth2_proxy_1;
+      access_by_lua_block {
+        if ngx.var.name_upstream_1 ~= "" then
+          ngx.header["Set-Cookie"] = "_oauth2_proxy_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
+        end
+      }
+  hosts:
+    - host: rts.local
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: rts-ui
+              port:
+                number: 80
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# Additional volumes on the output Deployment definition.
+volumes: []
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: []
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

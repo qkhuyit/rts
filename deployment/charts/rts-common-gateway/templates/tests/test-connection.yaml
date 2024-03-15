@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "rt-common-gateway.fullname" . }}-test-connection"
+  labels:
+    {{- include "rt-common-gateway.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "rt-common-gateway.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
