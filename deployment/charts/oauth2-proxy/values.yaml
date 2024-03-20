@@ -373,9 +373,9 @@ configuration:
     provider = "oidc"
     provider_display_name = "RTS System"
     login_url = "http://auth.rts.local/realms/rts/protocol/openid-connect/auth"
-    redeem_url = "http://rts-keycloak:8080/realms/rts/protocol/openid-connect/token"
-    validate_url = "http://rts-keycloak:8080/realms/rts/protocol/openid-connect/userinfo"
-    oidc_jwks_url = "http://rts-keycloak:8080/realms/rts/protocol/openid-connect/certs"
+    redeem_url = "http://rts-auth-keycloak:8080/realms/rts/protocol/openid-connect/token"
+    validate_url = "http://rts-auth-keycloak:8080/realms/rts/protocol/openid-connect/userinfo"
+    oidc_jwks_url = "http://rts-auth-keycloak:8080/realms/rts/protocol/openid-connect/certs"
     oidc_issuer_url = "http://auth.rts.local/realms/rts"
     redirect_url= "http://rts.local/oauth2/callback"
     scope = "openid email profile"
@@ -399,8 +399,6 @@ configuration:
     cookie_secure = "false"
     ssl_insecure_skip_verify = "true"
     email_domains = [ "*" ]
-
-
 
 
   ## @param configuration.existingConfigmap Configmap with the OAuth2 Proxy configuration
@@ -748,10 +746,10 @@ serviceAccount:
 externalRedis:
   ## @param externalRedis.host External Redis&reg; server host
   ##
-  host: ""
+  host: "rts-redis-master.rts-datastore"
   ## @param externalRedis.password External Redis&reg; user password
   ##
-  password: ""
+  password: "rts"
   ## @param externalRedis.port External Redis&reg; server port
   ##
   port: 6379
@@ -768,7 +766,7 @@ externalRedis:
 redis:
   ## @param redis.enabled Deploy Redis&reg; sub-chart
   ##
-  enabled: true
+  enabled: false
   ## @param redis.architecture Redis&reg; architecture
   ##
   architecture: "standalone"

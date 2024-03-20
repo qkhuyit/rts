@@ -1,11 +1,49 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "useUnknownInCatchVariables": false,
+    "composite": false,
+    "declarationMap": false,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "noLib": false,
+    "allowSyntheticDefaultImports": true,
+    "strictFunctionTypes": false,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "allowJs": true,
+    "lib": ["dom", "esnext"],
+    "noImplicitAny": false,
+    "types": ["node", "vite/client"],
+    "paths": {
+      "@/*": ["src/*"]
     }
-  ]
+  },
+  "include": [
+    "**/*.d.ts",
+    "mock/**/*",
+    "mocks/**/*",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+    "vite.config.ts"
+  ],
+  "exclude": ["node_modules", "dist", "**/*.js", "**/*.md", "src/**/*.md"]
 }

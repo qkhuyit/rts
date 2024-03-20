@@ -1,14 +1,28 @@
-# build stage
-FROM node:lts-alpine as build-stage
 
+# https://stackoverflow.com/questions/53681522/share-variable-in-multi-stage-dockerfile-arg-before-from-not-substituted
+#ARG PROJECT_DIR=/rts-ui
+#
+FROM node:21-slim as builder
+#
+#ARG PROJECT_DIR
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+#
+RUN npm install -g pnpm
+#
 COPY . .
-RUN npm run build
 
-# production stage
-FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+# RUN pnpm config set registry https://registry.npmmirror.com
+RUN pnpm install
+
+ENV VITE_BASE_URL=/
+
+RUN pnpm build
+
+
+FROM nginx:alpine as production
+#ARG PROJECT_DIR
+
+COPY --from=builder /app/dist/ /usr/share/nginx/html
+COPY .docker/app.conf /etc/nginx/conf.d/app/conf
+
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
