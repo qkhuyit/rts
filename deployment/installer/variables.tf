@@ -13,9 +13,9 @@ variable "namespace_common" {
   default = "rts-common"
 }
 
-variable "namespace_services" {
+variable "namespace_service" {
   type = string
-  default = "rts-services"
+  default = "rts-service"
 }
 
 variable "namespace_datastore" {

@@ -11,13 +11,8 @@ module "datastore_namespace" {
 
 module "services_namespace" {
   source = "./modules/namespace"
-  namespace_name = var.namespace_services
+  namespace_name = var.namespace_service
 }
-
-#module "common_namespace" {
-#  source = "./modules/namespace"
-#  namespace_name = var.namespace_common
-#}
 
 # 2. Deploy redis
 module "redis" {
@@ -60,11 +55,11 @@ module "auth-gateway" {
 # 7. Deploy gate way
 module "gateway" {
   source = "./modules/rts-gateway"
-  namespace = var.namespace_services
+  namespace = var.namespace_service
 }
 
 # 8. Deploy UI
 module "rts-ui" {
   source = "./modules/rts-ui"
-  namespace = var.namespace_services
+  namespace = var.namespace_service
 }

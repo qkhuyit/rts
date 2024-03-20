@@ -7,12 +7,12 @@ resource "helm_release" "oauth2-proxy" {
   # Set values with sensitive information using vault integration
   set {
     name    = "configuration.clientID"
-    value   = "oauth"
+    value   = "oauth2"
   }
 
   set {
     name    = "configuration.clientSecret"
-    value   = "9cVRBjiD7gm0xjkTCPsp6RMC6NY2rUBd"
+    value   = "WUalMBSR6kllneJi2Od9ni9nGhOIHe6E"
   }
 
   # Set configuration content directly (avoid heredoc syntax)
@@ -29,7 +29,7 @@ oidc_issuer_url = "http://auth.rts.local/realms/rts"
 redirect_url = "http://rts.local/oauth2/callback"
 email_domains = [ "*" ]
 cookie_domains = [ "*" ]
-whitelist_domains = [ "rts.local", ".rts.local" ]
+whitelist_domains = [ "*" ]
 scope = "openid email profile"
 reverse_proxy = "true"
 skip_provider_button = "true"
