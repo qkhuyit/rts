@@ -1,0 +1,22 @@
+{
+  "back": "Quay lại",
+  "cancelText": "Hủy bỏ",
+  "chooseText": "Vui lòng chọn",
+  "closeText": "Đóng",
+  "dark": "Chủ đề tối",
+  "delText": "Xóa",
+  "inputText": "Vui lòng nhập",
+  "light": "Chủ đề sáng",
+  "loadingText": "Đang tải...",
+  "okText": "Đồng ý",
+  "queryText": "Tìm kiếm",
+  "redo": "Làm mới",
+  "resetText": "Đặt lại",
+  "routes": {
+    "account": {
+      "settings": ""
+    }
+  },
+  "saveText": "Lưu",
+  "searchText": "Tìm kiếm"
+}

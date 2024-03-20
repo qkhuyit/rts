@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+  labels:
+    {{- include "rts-api.labels" . | nindent 4 }}
+data:
+  KEYCLOAK_CLIENT_ID: "{{ .Values.keycloak.clientID }}"
+  KEYCLOAK_CLIENT_SECRET: "{{ .Values.keycloak.clientSecret }}"
+  KEYCLOAK_PASSWORD: "{{ .Values.keycloak.password }}"
+  KEYCLOAK_REALM: "{{ .Values.keycloak.realm }}"
+  KEYCLOAK_URL: "{{ .Values.keycloak.url }}"
+  KEYCLOAK_USER: "{{ .Values.keycloak.username }}"

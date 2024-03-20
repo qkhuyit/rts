@@ -1,0 +1,28 @@
+{
+  "excel": {
+    "exportModalTitle": "Xuất dữ liệu",
+    "fileType": "Loại tệp",
+    "fileName": "Tên tệp"
+  },
+  "form": {
+    "putAway": "Thu gọn",
+    "unfold": "Mở rộng",
+    "maxTip": "Số ký tự phải nhỏ hơn {0}",
+    "apiSelectNotFound": "Vui lòng đợi dữ liệu được tải..."
+  },
+  "table": {
+    "settingDens": "Độ dày",
+    "settingDensDefault": "Mặc định",
+    "settingDensMiddle": "Trung bình",
+    "settingDensSmall": "Gọn gàng",
+    "settingColumn": "Cài đặt cột",
+    "settingColumnShow": "Hiển thị cột",
+    "settingIndexColumnShow": "Cột số thứ tự",
+    "settingFixedLeft": "Cố định bên trái",
+    "settingFixedRight": "Cố định bên phải",
+    "settingFullScreen": "Toàn màn hình",
+    "settingBordered": "Viền",
+    "index": "Số thứ tự",
+    "total": "Tổng cộng {total} dòng dữ liệu"
+  }
+}

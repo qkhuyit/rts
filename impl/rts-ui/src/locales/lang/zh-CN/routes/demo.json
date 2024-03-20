@@ -1,0 +1,20 @@
+{
+  "demo": "Demo trình diễn",
+  "button": "Mở rộng nút",
+  "modal": "Cửa sổ pop-up có thể kéo",
+  "form": {
+    "demo": "Demo biểu mẫu",
+    "basic": "Biểu mẫu cơ bản",
+    "rule": "Kiểm tra biểu mẫu",
+    "dynamic": "Biểu mẫu động",
+    "customForm": "Thành phần biểu mẫu tùy chỉnh"
+  },
+  "table": {
+    "demo": "Demo bảng",
+    "searchTable": "Bảng tìm kiếm",
+    "editRowTable": "Dòng có thể chỉnh sửa",
+    "wzry": "Vinh danh võ lâm",
+    "lol": "Liên minh huyền thoại"
+  },
+  "icon": "Biểu tượng tùy chỉnh"
+}

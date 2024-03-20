@@ -1,39 +1,34 @@
-# rts-ui
+# RTS System
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is used [vue3-antdv-admin](https://github.com/buqiyuan/vue3-antdv-admin) project to build
 
-## Recommended IDE Setup
+## Install and Run
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Install dependencies
 
-## Type Support for `.vue` Imports in TS
+```bash
+cd $PROJECT_DIR
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+pnpm install
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
 ```
 
-### Compile and Hot-Reload for Development
+- Run
 
-```sh
-npm run dev
+```bash
+pnpm dev
 ```
 
-### Type-Check, Compile and Minify for Production
+- Build
 
-```sh
-npm run build
+```bash
+pnpm build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## vscode configuration
 
-```sh
-npm run lint
-```
+Install the recommended plug-in in the project root directory `.vscode`, then install `Volar`, disable `Vetur`, and restart vscode.
+
+> Used Vue3.x family bucket, ant-design-vue4.x and typescript5.x to practice the new features and gameplay of vue3.x. I have to say that the Composition API of vue3.x is more flexible than the Options API of vue2.x There are many, which allow us to flexibly combine component logic. We can easily use hooks to replace the previous writing methods of mixins and so on. For more hooks, please refer to [vueuse](https://vueuse.org/functions.html)
+
+
