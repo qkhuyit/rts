@@ -68,6 +68,13 @@ ingress:
               name: rts-ui
               port:
                 number: 80
+        - path: /api
+          pathType: Prefix
+          backend:
+            service:
+              name: rts-api
+              port:
+                number: 80
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

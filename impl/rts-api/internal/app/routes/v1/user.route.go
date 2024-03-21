@@ -43,4 +43,10 @@ func (r *UserRoute) Setup(e *echo.Echo) {
 
 	e.DELETE(r.baseEndPoint+"/:id", r.userController.DeleteById)
 	r.logger.Infoln("  DELETE /api/v1/users/:id - Delete user by id")
+
+	e.GET(r.baseEndPoint+"/profile", r.userController.GetProfile)
+	r.logger.Infoln("  DELETE /api/v1/profile - Get user requester profile")
+
+	e.GET(r.baseEndPoint+"/permissions", r.userController.GetPermission)
+	r.logger.Infoln("  DELETE /api/v1/permissions - Get user requester allowed permissions")
 }

@@ -5,6 +5,7 @@ import (
 	"github.com/qkhuyit/rts/rts-shared/common/pagination"
 	"github.com/qkhuyit/rts/rts-shared/connectors/keycloak"
 	"github.com/qkhuyit/rts/rts-shared/core/entities"
+	"github.com/sirupsen/logrus"
 	"strconv"
 )
 
@@ -14,48 +15,46 @@ const (
 
 type UserRepository interface {
 	GetUsers(
-		p *pagination.Pagination[entities.UserEntity],
-	) (*pagination.Pagination[entities.UserEntity], error)
+		p pagination.Request,
+	) (*pagination.Paged[entities.UserEntity], error)
 }
 
 type userRepositoryImpl struct {
-	kc keycloak.KeycloakConnector
+	kc     keycloak.KeycloakConnector
+	logger *logrus.Logger
 }
 
 func NewUserRepository(
+	logger *logrus.Logger,
 	keycloakConnector keycloak.KeycloakConnector,
 ) UserRepository {
 	return &userRepositoryImpl{
-		kc: keycloakConnector,
+		kc:     keycloakConnector,
+		logger: logger,
 	}
 }
 
 func (r *userRepositoryImpl) GetUsers(
-	p *pagination.Pagination[entities.UserEntity],
-) (*pagination.Pagination[entities.UserEntity], error) {
+	p pagination.Request,
+) (*pagination.Paged[entities.UserEntity], error) {
 	var users []entities.UserEntity
 	endpoint := fmt.Sprintf(keycloakUserEndpointFormat, r.kc.GetEndpoint(), r.kc.GetRealm())
 
 	// Fetch keycloak users
-	req, err := r.kc.CreateRequest()
+	req, err := r.kc.CreateRequest(p.GetQueryParams())
 	if err != nil {
+		r.logger.Error("failed to create keycloak request, err: ", err)
 		return nil, err
 	}
 
-	resp, err := req.
-		SetResult(users).
-		Get(endpoint)
-	if err != nil {
+	if _, err := req.
+		SetResult(&users).
+		Get(endpoint); err != nil {
 		return nil, err
-	}
-
-	rw := string(resp.Body())
-	if rw != "nil" {
-
 	}
 
 	// Fetch total rows
-	req, err = r.kc.CreateRequest()
+	req, err = r.kc.CreateRequest(p.GetQueryParams())
 	count, err := req.Get(endpoint + "/count")
 	if err != nil {
 		return nil, err
@@ -68,10 +67,10 @@ func (r *userRepositoryImpl) GetUsers(
 	}
 
 	// Return paging result
-	return &pagination.Pagination[entities.UserEntity]{
+	return &pagination.Paged[entities.UserEntity]{
 		Rows:      users,
 		TotalRows: int64(totalRows),
-		Page:      p.Page,
-		PageSize:  p.PageSize,
+		Page:      p.GetOffset(),
+		PageSize:  p.GetLimit(),
 	}, nil
 }

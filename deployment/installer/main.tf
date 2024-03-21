@@ -63,3 +63,9 @@ module "rts-ui" {
   source = "./modules/rts-ui"
   namespace = var.namespace_service
 }
+
+# 9. Deploy API
+module "rts-api" {
+  source = "./modules/rts-api"
+  namespace = var.namespace_service
+}

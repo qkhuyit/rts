@@ -23,7 +23,9 @@ const (
 type KeycloakConnector interface {
 	GetRealm() string
 	GetEndpoint() string
-	CreateRequest() (*resty.Request, error)
+	CreateRequest(
+		params map[string]string,
+	) (*resty.Request, error)
 }
 
 type keycloakToken struct {
@@ -64,7 +66,9 @@ func (kc *keycloakConnectorImpl) GetRealm() string { return kc.conf.Realm }
 
 func (kc *keycloakConnectorImpl) GetEndpoint() string { return kc.conf.Endpoint }
 
-func (kc *keycloakConnectorImpl) CreateRequest() (*resty.Request, error) {
+func (kc *keycloakConnectorImpl) CreateRequest(
+	params map[string]string,
+) (*resty.Request, error) {
 	if kc.token == nil || kc.token.isExpired() {
 		err := kc.getAccessToken()
 		if err != nil {
@@ -77,6 +81,10 @@ func (kc *keycloakConnectorImpl) CreateRequest() (*resty.Request, error) {
 		R().
 		EnableTrace().
 		SetHeader(authenticationHeaderField, fmt.Sprintf(authenticationFieldValueFormat, kc.token.accessToken))
+
+	if params != nil {
+		req.SetQueryParams(params)
+	}
 
 	return req, nil
 
@@ -99,9 +107,14 @@ func (kc *keycloakConnectorImpl) getAccessToken() error {
 		SetResult(&tokenResp).
 		EnableTrace()
 
-	_, err := req.Post(fmt.Sprintf(endpointGeAccessTokenFormant, kc.conf.Endpoint, kc.conf.Realm))
+	resp, err := req.Post(fmt.Sprintf(endpointGeAccessTokenFormant, kc.conf.Endpoint, kc.conf.Realm))
 	if err != nil {
 		return err
+	}
+
+	bodyStr := string(resp.Body())
+	if bodyStr != "" {
+
 	}
 
 	token, err := jwt.Parse(tokenResp.AccessToken, func(token *jwt.Token) (interface{}, error) {
