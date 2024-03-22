@@ -1,0 +1,1 @@
+// This file is used to declare types for new features in ES proposals that are not yet supported by typescript
