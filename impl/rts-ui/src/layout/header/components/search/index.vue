@@ -1,12 +1,12 @@
 <template>
   <Tooltip :title="$t('common.searchText')" placement="bottom" :mouse-enter-delay="0.5">
     <slot><SearchOutlined @click="visible = true" /></slot>
-    <DraggableModal v-model:open="visible" title="搜索菜单" :keyboard="false" @cancel="handleClose">
+    <DraggableModal v-model:open="visible" title="Search menu" :keyboard="false" @cancel="handleClose">
       <a-input
         ref="inputRef"
         v-model:value="keyword"
         clearable
-        placeholder="请输入关键词搜索"
+        placeholder="Please enter keyword search"
         @change="handleSearch"
       >
         <template #prefix>
@@ -14,7 +14,7 @@
         </template>
       </a-input>
       <div class="mt-20px">
-        <Empty v-if="resultOptions.length === 0" description="暂无搜索结果" />
+        <Empty v-if="resultOptions.length === 0" description="No search results yet" />
         <search-result
           v-else
           v-model:value="activePath"
@@ -55,13 +55,13 @@
 
   watch(visible, async (val) => {
     if (val) {
-      /** 自动聚焦 */
+      /** auto focus */
       await nextTick();
       inputRef.value?.focus();
     }
   });
 
-  /** 查询 */
+  /** Inquire */
   function search() {
     resultOptions.value = menusList.value.filter((menu) => {
       const title = transformI18n(menu.meta?.title);
@@ -77,11 +77,11 @@
     }
   }
 
-  /** 将路由转换成菜单列表 */
+  /** Convert routes into menu lists */
   function transformRouteToList(routes: RouteRecordRaw[], treeMap: RouteRecordRaw[] = []) {
     if (routes && routes.length === 0) return [];
     return routes.reduce((acc, cur) => {
-      /** 允许在菜单内显示并且无子路由 */
+      /** Allow display within menus and no subroutes */
       if (!cur.meta?.hideInMenu && !cur.children) {
         acc.push(cur);
       }
@@ -94,7 +94,7 @@
 
   function handleClose() {
     visible.value = false;
-    /** 延时处理防止用户看到某些操作 */
+    /** Delay processing prevents users from seeing certain actions */
     setTimeout(() => {
       resultOptions.value = [];
       keyword.value = '';

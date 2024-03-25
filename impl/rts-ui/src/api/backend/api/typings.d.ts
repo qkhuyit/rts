@@ -1280,4 +1280,35 @@ declare namespace API {
   type UserUpdateParams = {
     id: number;
   };
+
+  type GroupParams = {
+    page: number;
+    pageSize: number;
+    search: string;
+  };
+
+  type GroupEntity = {
+    id: string;
+    name: string;
+    path: string;
+    subGroupCount: number;
+    subGroups: GroupEntity[];
+    description: string;
+    status: string;
+    privilege: {
+      view: boolean;
+      viewMembers: boolean;
+      manageMembers: boolean;
+      manage: boolean;
+      manageMembership: boolean;
+    };
+  };
+
+  type GroupPagedEntity = {
+    pageSize: number;
+    page: number;
+    rows: GroupEntity[];
+    totalRows: number;
+    totalPage: number;
+  };
 }

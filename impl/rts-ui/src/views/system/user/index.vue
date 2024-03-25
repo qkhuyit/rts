@@ -5,9 +5,9 @@
     </template>
     <template #right-content>
       <DynamicTable
-        header-title="用户管理"
+        header-title="User Management"
         show-index
-        title-tooltip="请不要随意删除用户，避免到影响其他用户的使用。"
+        title-tooltip="Please do not delete users at will to avoid affecting the use of other users."
         :data-request="loadTableData"
         :columns="columns"
         :scroll="{ x: 2000 }"
@@ -16,8 +16,10 @@
         <template v-if="isCheckRows" #title>
           <Alert class="w-full" type="info" show-icon>
             <template #message>
-              已选 {{ isCheckRows }} 项
-              <a-button type="link" @click="rowSelection.selectedRowKeys = []">取消选择</a-button>
+              {{ isCheckRows }} items selected
+              <a-button type="link" @click="rowSelection.selectedRowKeys = []"
+                >Cancel selection</a-button
+              >
             </template>
           </Alert>
         </template>
@@ -27,14 +29,14 @@
             :disabled="!$auth('system:user:create')"
             @click="openUserModal({})"
           >
-            <Icon icon="ant-design:plus-outlined" /> 新增
+            <Icon icon="ant-design:plus-outlined" /> New
           </a-button>
           <a-button
             type="error"
             :disabled="!isCheckRows || !$auth('system:user:delete')"
             @click="delRowConfirm(rowSelection.selectedRowKeys)"
           >
-            <Icon icon="ant-design:delete-outlined" /> 删除
+            <Icon icon="ant-design:delete-outlined" /> Delete
           </a-button>
         </template>
       </DynamicTable>

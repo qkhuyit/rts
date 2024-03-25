@@ -39,9 +39,9 @@ export function useI18n(namespace?: string): {
 }
 
 /**
- * 国际化转换工具函数，主要用于处理动态路由的title
+ * International conversion tool function, mainly used to process dynamic routing titles
  * @param {string | Title18n} message message
- * @param isI18n  默认为true，获取对应的翻译文本,否则返回本身
+ * @param isI18n The default is true, get the corresponding translation text, otherwise return itself
  * @returns message
  */
 export function transformI18n(message: string | Title18n = '', isI18n = true) {
@@ -50,7 +50,6 @@ export function transformI18n(message: string | Title18n = '', isI18n = true) {
   }
   const i18n = locales.i18n;
 
-  // 处理动态路由的title, 格式 {zh_CN:"",en_US:""}
   if (typeof message === 'object') {
     return message[i18n.global?.locale];
   }
@@ -61,5 +60,5 @@ export function transformI18n(message: string | Title18n = '', isI18n = true) {
   return message;
 }
 
-// 主要用于配合vscode i18nn ally插件的提示。此功能仅用于路由和菜单。请在其他地方使用 vue-i18n 的 useI18n
+// Mainly used to cooperate with vscode i18nn ally plug-in prompts. This feature is only available for routing and menus. Please use useI18n of vue-i18n elsewhere
 export const t = (key: string) => key;

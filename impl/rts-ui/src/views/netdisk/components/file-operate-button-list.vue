@@ -7,37 +7,37 @@
       <Tooltip title="注意：复制或剪切时会覆盖重名文件" placement="top">
         <a-button color="#e6a23c" :disabled="disabledMultiOperateButton">
           <template #icon><MenuOutlined /></template>
-          批量操作
+          Batch Action
         </a-button>
       </Tooltip>
       <template #overlay>
         <Menu @click="handleMoreOpCommand">
           <Menu.Item key="copy" :disabled="!$auth('netdisk:manage:copy')">
-            <CopyOutlined /> 复制所选
+            <CopyOutlined /> Copy selected
           </Menu.Item>
           <Menu.Item key="cut" :disabled="!$auth('netdisk:manage:cut')">
-            <ScissorOutlined :rotate="-90" /> 剪切所选
+            <ScissorOutlined :rotate="-90" /> Cut selected
           </Menu.Item>
           <Menu.Item key="delete" :disabled="!$auth('netdisk:manage:delete')">
-            <DeleteOutlined /> 删除所选
+            <DeleteOutlined /> Delete selected
           </Menu.Item>
           <Menu.Item key="cancel" divider :disabled="!copyMode && !cutMode">
-            <CloseOutlined /> 取消粘贴
+            <CloseOutlined /> Cancel paste
           </Menu.Item>
         </Menu>
       </template>
     </Dropdown>
     <a-button type="success" :disabled="!$auth('netdisk:manage:list')" @click="handleSearch">
       <template #icon><SearchOutlined /></template>
-      {{ isSearching ? '取消搜索' : '全盘搜索' }}
+      {{ isSearching ? 'Cancel search' : 'Search all' }}
     </a-button>
     <a-button type="primary" :disabled="!$auth('netdisk:manage:token')" @click="handleUpload">
       <template #icon><CloudUploadOutlined /></template>
-      上传文件
+      upload files
     </a-button>
     <a-button @click="handleMkdir">
       <template #icon><FolderAddOutlined /></template>
-      创建文件夹
+      Create folder
     </a-button>
   </Space>
   <FileUploadDrawer ref="uploadDrawerRef" @changed="$emit('changed')" />
@@ -136,7 +136,7 @@
     } else if (command === 'delete') {
       // delete
       Modal.confirm({
-        title: '你确定要删除吗?',
+        title: 'Are you sure you want to delete?',
         icon: createVNode(ExclamationCircleOutlined),
         onOk: handleDelete,
       });
@@ -166,18 +166,18 @@
       if (cutMode.value && !copyMode.value) {
         // cut
         await Api.netDiskManage.netDiskManageCut(opData);
-        notifyMsg = '剪切';
+        notifyMsg = 'Cut';
         cutMode.value = false;
       } else if (!cutMode.value && copyMode.value) {
         // copy
         await Api.netDiskManage.netDiskManageCopy(opData);
-        notifyMsg = '复制';
+        notifyMsg = 'Copy';
         copyMode.value = false;
       } else {
         throw new Error('unsupport operate');
       }
       clearPasteCache();
-      message.success(`${notifyMsg}成功`);
+      message.success(`${notifyMsg} success`);
       emit('changed');
     } finally {
       props.updateOperateStatus(false);
@@ -194,7 +194,7 @@
       },
       { showSuccessMsg: false },
     );
-    message.success('已删除指定列表');
+    message.success('The specified list has been deleted');
     emit('changed');
   };
 
@@ -205,7 +205,7 @@
     }
     await showModal({
       modalProps: {
-        title: '全盘搜索',
+        title: 'Search all',
         width: 700,
         onFinish: async (values) => {
           emit('update:searchKey', values.key);
@@ -225,7 +225,7 @@
   const handleMkdir = async () => {
     await showModal({
       modalProps: {
-        title: '创建文件夹',
+        title: 'Create folder',
         width: 700,
         onFinish: async (values) => {
           await Api.netDiskManage.netDiskManageMkdir({

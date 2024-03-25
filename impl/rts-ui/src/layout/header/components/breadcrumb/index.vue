@@ -34,7 +34,7 @@
   };
   const getRouteByName = (name: string) => router.getRoutes().find((n) => n.name === name);
 
-  // 点击菜单
+  // click menu
   const clickMenuItem = (menuItem: RouteRecordRaw) => {
     const lastChild = findLastChild(menuItem);
     console.log('lastChild', menuItem, lastChild);
@@ -60,7 +60,7 @@
         {
           name: '__index',
           meta: {
-            title: '首页',
+            title: 'front page',
           },
           children: userStore.menus,
         },

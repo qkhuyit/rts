@@ -6,12 +6,12 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   {
     field: 'avatar',
     component: () => AvatarUpload,
-    label: '头像',
+    label: 'Avatar',
   },
   {
     field: 'deptId',
     component: 'TreeSelect',
-    label: '所属部门',
+    label: 'Department',
     componentProps: {
       fieldNames: {
         label: 'name',
@@ -24,7 +24,7 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   {
     field: 'roleIds',
     component: 'Select',
-    label: '所属角色',
+    label: 'Role',
     rules: [{ required: true, type: 'array' }],
     componentProps: {
       mode: 'multiple',
@@ -37,21 +37,21 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   {
     field: 'username',
     component: 'Input',
-    label: '用户名',
+    label: 'User name color',
     rules: [{ required: true }],
   },
   {
     field: 'password',
-    label: '密码',
+    label: 'Password',
     component: 'InputPassword',
     componentProps: {
-      placeholder: '无需修改请留空',
+      placeholder: 'Please leave blank if no modification is required.',
     },
   },
   {
     field: 'nickname',
     component: 'Input',
-    label: '呢称',
+    label: 'Please leave your nickname blank',
     colProps: {
       span: 12,
     },
@@ -59,7 +59,7 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   {
     field: 'email',
     component: 'Input',
-    label: '邮箱',
+    label: 'Email',
     colProps: {
       span: 12,
     },
@@ -67,7 +67,7 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   {
     field: 'phone',
     component: 'Input',
-    label: '手机',
+    label: 'Phone',
     colProps: {
       span: 12,
     },
@@ -75,21 +75,21 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   {
     field: 'remark',
     component: 'InputTextArea',
-    label: '备注',
+    label: 'Remark',
   },
   {
     field: 'status',
     component: 'RadioGroup',
-    label: '状态',
+    label: 'Status',
     defaultValue: 1,
     componentProps: {
       options: [
         {
-          label: '启用',
+          label: 'Enable',
           value: 1,
         },
         {
-          label: '禁用',
+          label: 'Disable',
           value: 0,
         },
       ],
@@ -103,7 +103,7 @@ export const updatePswSchemas: FormSchema[] = [
   {
     field: 'password',
     component: 'Input',
-    label: '新密码',
+    label: 'Password',
     rules: [{ required: true, type: 'string' }],
   },
 ];
@@ -114,7 +114,7 @@ export const transferUserSchemas: FormSchema[] = [
   {
     field: 'departmentId',
     component: 'TreeSelect',
-    label: '转移至',
+    label: 'Transfer to',
     rules: [{ required: true, type: 'number' }],
   },
 ];

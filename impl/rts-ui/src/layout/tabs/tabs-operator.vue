@@ -35,24 +35,24 @@
 
   const activeKey = computed(() => tabsViewStore.getCurrentTab?.fullPath);
 
-  /** 标签页列表 */
+  /** Tab list */
   const tabsList = computed(() => tabsViewStore.getTabsList);
 
-  /** 目标路由是否等于当前路由 */
+  /** Whether the target route is equal to the current route */
   const isCurrentRoute = (route) => {
     return router.currentRoute.value.matched.some((item) => item.name === route.name);
   };
 
-  /** 关闭当前页面 */
+  /** Close current page */
   const removeTab = () => {
     if (tabsList.value.length === 1) {
-      return message.warning('这已经是最后一页，不能再关闭了！');
+      return message.warning('This is the last page and cannot be closed anymore！');
     }
     // tabsViewMutations.closeCurrentTabs(route)
     tabsViewStore.closeCurrentTab(props.tabItem);
   };
 
-  /** 刷新页面 */
+  /** Refresh page */
   const reloadPage = () => {
     router.replace({
       name: REDIRECT_NAME,
@@ -62,28 +62,28 @@
     });
   };
 
-  /** 关闭左侧 */
+  /** close left */
   const closeLeft = () => {
     // tabsViewMutations.closeLeftTabs(route)
     tabsViewStore.closeLeftTabs(props.tabItem);
     !isCurrentRoute(props.tabItem) && router.replace(props.tabItem.fullPath);
   };
 
-  /** 关闭右侧 */
+  /** Close right */
   const closeRight = () => {
     // tabsViewMutations.closeRightTabs(route)
     tabsViewStore.closeRightTabs(props.tabItem);
     !isCurrentRoute(props.tabItem) && router.replace(props.tabItem.fullPath);
   };
 
-  /** 关闭其他 */
+  /** Close other */
   const closeOther = () => {
     // tabsViewMutations.closeOtherTabs(route)
     tabsViewStore.closeOtherTabs(props.tabItem);
     !isCurrentRoute(props.tabItem) && router.replace(props.tabItem.fullPath);
   };
 
-  /** 关闭全部 */
+  /** Close all */
   const closeAll = () => {
     localStorage.removeItem('routes');
     // tabsViewMutations.closeAllTabs()
@@ -91,10 +91,10 @@
     router.replace('/');
   };
 
-  /** 打开页面所在的文件(仅在开发环境有效) */
+  /** Open the file containing the page(Only valid in development environment) */
   const openPageFile = async () => {
     if (!isDevMode) {
-      console.warn('仅在开发环境有效');
+      console.warn('Only valid in development environment');
       return;
     }
 

@@ -8,7 +8,7 @@
       <MySubMenuItem :item="child" />
     </template>
   </Menu.SubMenu>
-  <!-- 菜单 -->
+  <!-- menu -->
   <MyMenuItem v-else :item="item" />
 </template>
 

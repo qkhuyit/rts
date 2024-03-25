@@ -72,14 +72,14 @@
 
 <template>
   <div :style="{ '--border': 1 }" class="header">
-    <div class="title">组织架构</div>
-    <a-input-search v-model:value="searchValue" size="small" placeholder="搜索" />
+    <div class="title">Organization</div>
+    <a-input-search v-model:value="searchValue" size="small" placeholder="Search" />
     <a-dropdown>
       <Icon icon="ant-design:more-outlined" size="20" class="flex-shrink-0" />
       <template #overlay>
         <a-menu>
-          <a-menu-item @click="expandAll"> 展开全部 </a-menu-item>
-          <a-menu-item @click="expandedKeys = []"> 折叠全部 </a-menu-item>
+          <a-menu-item @click="expandAll"> Expand All </a-menu-item>
+          <a-menu-item @click="expandedKeys = []"> Collapse All </a-menu-item>
         </a-menu>
       </template>
     </a-dropdown>

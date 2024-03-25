@@ -68,9 +68,12 @@ func (r *userRepositoryImpl) GetUsers(
 
 	// Return paging result
 	return &pagination.Paged[entities.UserEntity]{
-		Rows:      users,
-		TotalRows: int64(totalRows),
-		Page:      p.GetOffset(),
-		PageSize:  p.GetLimit(),
+		Items: users,
+		Meta: pagination.PagedMeta{
+			ItemCount:    totalRows,
+			ItemsPerPage: p.GetLimit(),
+			CurrentPage:  p.GetOffset(),
+			TotalPages:   1,
+		},
 	}, nil
 }

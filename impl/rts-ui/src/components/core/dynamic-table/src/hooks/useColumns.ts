@@ -40,7 +40,7 @@ export const useColumns = ({ state, methods, props, tableAction }: UseTableColum
     if (innerProps?.showIndex) {
       columns.unshift({
         dataIndex: ColumnKeyFlag.INDEX,
-        title: '序号',
+        title: 'Serial',
         width: 60,
         align: 'center',
         fixed: 'left',

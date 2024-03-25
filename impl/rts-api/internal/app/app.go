@@ -10,6 +10,7 @@ import (
 	"github.com/qkhuyit/rts/rts-api/internal/app/routes"
 	"github.com/qkhuyit/rts/rts-shared/connectors"
 	"github.com/qkhuyit/rts/rts-shared/repositories"
+	"github.com/qkhuyit/rts/rts-shared/services"
 	"go.uber.org/fx"
 )
 
@@ -17,6 +18,7 @@ var App = fx.New(
 	bootstrap.Module,
 	connectors.Module,
 	repositories.Module,
+	services.Module,
 	core.Module,
 	facades.Module,
 	controllers.Module,

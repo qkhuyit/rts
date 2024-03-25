@@ -1,7 +1,6 @@
 <template>
   <div class="box">
-    <Descriptions title="Dashboard" bordered>
-    </Descriptions>
+    <Descriptions title="Dashboard" bordered />
   </div>
 </template>
 

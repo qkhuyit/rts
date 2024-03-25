@@ -3,32 +3,32 @@ import mitt from 'mitt';
 
 const emitter: mitt.Emitter = mitt();
 
-// 自定义触发器
+// Custom trigger
 const customEmit = (eventName) => {
   emitter.emit(eventName);
 };
 
-// 自定义接收器
+// custom receiver
 const customOn = (eventName, callback) => {
   emitter.on(eventName, () => callback());
 };
 
-// 通知刷新表格数据
+// Notification to refresh table data
 const toRefreshTable = () => {
   emitter.emit('reload');
 };
 
-// 刷新表格数据
+// Refresh table data
 const reload = (callback) => {
   emitter.on('reload', () => callback());
 };
 
-// 通知刷新树结构数据
+// Notification to refresh tree structure data
 const toRefreshTree = () => {
   emitter.emit('refreshTree');
 };
 
-// 刷新树数据
+// Refresh tree data
 const refreshTree = (callback) => {
   emitter.on('refreshTree', () => callback());
 };

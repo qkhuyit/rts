@@ -20,27 +20,27 @@ resource "helm_release" "rts-auth" {
 
   set {
     name  = "externalDatabase.host"
-    value = ""
+    value = "rts-pg-postgresql.rts-datastore"
   }
 
   set {
     name  = "externalDatabase.port"
-    value = ""
+    value = "5432"
   }
 
   set {
     name  = "externalDatabase.user"
-    value = ""
+    value = "rts"
   }
 
   set {
     name  = "externalDatabase.database"
-    value = ""
+    value = "rts_db"
   }
 
   set {
     name  = "externalDatabase.password"
-    value = ""
+    value = "rts"
   }
 
   set {
@@ -48,6 +48,6 @@ resource "helm_release" "rts-auth" {
     value = <<EOF
 file("${path.module}/realm.json")
     EOF
-
   }
+
 }

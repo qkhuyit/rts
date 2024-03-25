@@ -1,7 +1,7 @@
 <template>
   <div class="logo">
-    <img src="~@/assets/images/logo.png" alt="" />
-    <h2 v-show="!collapsed" class="title">One Piece</h2>
+    <img src="~@/assets/images/logo2.png" alt="" />
+    <h2 v-show="!collapsed" class="title">RTS System</h2>
   </div>
 </template>
 
@@ -29,7 +29,7 @@
     .title {
       @apply mb-0 text-xl;
 
-      color: var(--app-primary-color);
+      color: #1677ff;
     }
   }
 </style>

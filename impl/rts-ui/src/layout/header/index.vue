@@ -101,10 +101,10 @@
     };
   });
 
-  // 退出登录
+  // sign out
   const doLogout = () => {
     Modal.confirm({
-      title: '您确定要退出登录吗？',
+      title: 'Are you sure you want to logout ?',
       icon: <QuestionCircleOutlined />,
       centered: true,
       onOk: async () => {
@@ -112,7 +112,7 @@
         keepAliveStore.clear();
         // 移除标签页
         localStorage.clear();
-        message.success('成功退出登录');
+        message.success('Log out successfully');
         router.replace({
           name: LOGIN_NAME,
           query: {

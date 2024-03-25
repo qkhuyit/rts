@@ -1,7 +1,7 @@
 <template>
   <SettingOutlined @click="showDrawer" />
   <Drawer v-model:open="visible" placement="right" :closable="false">
-    <Descriptions title="整体风格" :column="5">
+    <Descriptions title="Overall style" :column="5">
       <Descriptions.Item v-for="theme in themeStyle" :key="theme.value">
         <Tooltip :title="theme.label">
           <div
@@ -14,7 +14,7 @@
         </Tooltip>
       </Descriptions.Item>
     </Descriptions>
-    <Descriptions title="主题色" :column="9">
+    <Descriptions title="Theme color" :column="9">
       <Descriptions.Item v-for="item in themeColors" :key="item.key">
         <div class="style-checbox-item">
           <Tooltip :title="item.title">
@@ -26,7 +26,7 @@
       </Descriptions.Item>
       <Descriptions.Item key="custom">
         <div class="style-checbox-item">
-          <Tooltip title="自定义">
+          <Tooltip title="Customize">
             <Tag :color="customColor" class="relative overflow-hidden">
               <input
                 v-model="customColor"
@@ -41,7 +41,7 @@
         </div>
       </Descriptions.Item>
     </Descriptions>
-    <Descriptions title="导航模式" :column="5">
+    <Descriptions title="Navigation mode" :column="5">
       <Descriptions.Item v-for="item in layouts" :key="item.value">
         <div
           class="style-checbox-item"

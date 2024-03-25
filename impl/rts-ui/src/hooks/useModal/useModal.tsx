@@ -9,7 +9,7 @@ export const useModal = () => {
   let _modalInstance: ComponentInternalInstance;
   const modalRef = ref<MyModalInstance>();
   const appContext = _app?._context || getCurrentInstance()?.appContext;
-  // 当前模态框是否处于App.vue上下文中
+  // Whether the current modal box is in the App.vue context
   const isAppChild = ref(false);
 
   const getModalInstance = async () => {

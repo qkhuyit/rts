@@ -1,22 +1,22 @@
 {
-  "back": "返回",
-  "cancelText": "取消",
-  "chooseText": "请选择",
-  "closeText": "关闭",
-  "dark": "黑暗主题",
-  "delText": "删除",
-  "inputText": "请输入",
-  "light": "亮色主题",
-  "loadingText": "加载中...",
-  "okText": "确认",
-  "queryText": "查询",
-  "redo": "刷新",
-  "resetText": "重置",
+  "back": "Quay lại",
+  "cancelText": "Hủy bỏ",
+  "chooseText": "Vui lòng chọn",
+  "closeText": "Đóng",
+  "dark": "Chủ đề tối",
+  "delText": "Xóa",
+  "inputText": "Vui lòng nhập",
+  "light": "Chủ đề sáng",
+  "loadingText": "Đang tải...",
+  "okText": "Đồng ý",
+  "queryText": "Tìm kiếm",
+  "redo": "Làm mới",
+  "resetText": "Đặt lại",
   "routes": {
     "account": {
       "settings": ""
     }
   },
-  "saveText": "保存",
-  "searchText": "搜索"
+  "saveText": "Lưu",
+  "searchText": "Tìm kiếm"
 }

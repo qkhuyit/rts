@@ -35,7 +35,7 @@
                 <component :is="Component" :key="route.fullPath" />
               </keep-alive>
             </Transition>
-            <template #fallback> 正在加载... </template>
+            <template #fallback> Loading... </template>
           </Suspense>
         </template>
       </router-view>
@@ -63,16 +63,16 @@
 
   const itemRefs: Recordable<TabsOperatorInstance | null> = {};
 
-  // 解决路由切换动画出现滚动条闪烁问题
+  // Solve the problem of scroll bar flickering in route switching animation
   const overflow = ref('auto');
   const activeKey = computed(() => tabsViewStore.getCurrentTab?.fullPath);
-  // 标签页列表
+  // Tab list
   const tabList = computed(() => tabsViewStore.getTabsList);
 
-  // 缓存的路由组件列表
+  // List of cached routing components
   const keepAliveComponents = computed(() => keepAliveStore.list);
 
-  // 获取简易的路由对象
+  // Get a simple routing object
   const getSimpleRoute = (route): RouteItem => {
     const { fullPath, hash, meta, name, params, path, query } = route;
     return { fullPath, hash, meta, name, params, path, query };
@@ -87,7 +87,7 @@
     routes = [getSimpleRoute(route)];
   }
 
-  // 初始化标签页
+  // Initialize tab page
   tabsViewStore.initTabs(routes);
 
   watch(
@@ -100,20 +100,20 @@
     { immediate: true },
   );
 
-  // 在页面关闭或刷新之前，保存数据
+  // Save data before page is closed or refreshed
   window.addEventListener('beforeunload', () => {
     if (tabsViewStore.getCurrentTab) {
       Storage.set(TABS_ROUTES, JSON.stringify([tabsViewStore.getCurrentTab]));
     }
   });
 
-  // tabs 编辑（remove || add）
+  // tabs editing (remove || add)
   const editTabItem = (targetKey: string, action: string) => {
     if (action == 'remove') {
       itemRefs[targetKey]?.removeTab();
     }
   };
-  // 切换页面
+  // Switch page
   const changePage = (key) => {
     Object.is(route.fullPath, key) || router.push(key);
   };

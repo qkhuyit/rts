@@ -1,8 +1,8 @@
 <template>
   <DynamicTable
     row-key="id"
-    header-title="角色管理"
-    title-tooltip="超级管理员默认拥有所有资源访问权限且不支持修改"
+    header-title="Role Management"
+    title-tooltip="Super administrators have access to all resources by default and do not support modification."
     :data-request="Api.systemRole.roleList"
     :columns="columns"
     bordered
@@ -10,7 +10,7 @@
   >
     <template #toolbar>
       <a-button type="primary" :disabled="!$auth('system:role:create')" @click="openMenuModal({})">
-        新增
+        New
       </a-button>
     </template>
   </DynamicTable>
@@ -50,7 +50,7 @@
   const openMenuModal = async (record: Partial<TableListItem>) => {
     const [formRef] = await showModal({
       modalProps: {
-        title: `${record.id ? '编辑' : '新增'}角色`,
+        title: `${record.id ? 'Edit' : 'New'} Role`,
         width: '50%',
         onFinish: async (values) => {
           record.id && (values.roleId = record.id);
@@ -59,7 +59,6 @@
             ...values,
             menuIds: [...menusRef.halfCheckedKeys, ...menusRef.checkedKeys],
           };
-          console.log('新增/编辑角色', params);
           if (record.id) {
             await Api.systemRole.roleUpdate({ id: record.id }, params);
           } else {
@@ -101,14 +100,14 @@
   const columns: TableColumnItem[] = [
     ...baseColumns,
     {
-      title: '操作',
+      title: 'Action',
       width: 130,
       dataIndex: 'ACTION',
       hideInSearch: true,
       fixed: 'right',
       actions: ({ record }) => [
         {
-          label: '编辑',
+          label: 'Edit',
           auth: {
             perm: 'system:role:update',
             effect: 'disable',
@@ -118,10 +117,10 @@
           },
         },
         {
-          label: '删除',
+          label: 'Delete',
           auth: 'system:role:delete',
           popConfirm: {
-            title: '你确定要删除吗？',
+            title: 'Are you sure you want to delete role ？',
             placement: 'left',
             onConfirm: () => delRowConfirm(record),
           },

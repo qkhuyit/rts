@@ -23,6 +23,6 @@
     "settingFullScreen": "Full Screen",
     "settingBordered": "Bordered",
     "index": "Index",
-    "total": "total of {total}"
+    "total": "Total {total} records"
   }
 }

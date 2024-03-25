@@ -2,7 +2,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { debounce } from 'lodash-es';
 
 /**
- * description: 获取页面宽度
+ * description: Get page width
  */
 
 export function useDomWidth() {

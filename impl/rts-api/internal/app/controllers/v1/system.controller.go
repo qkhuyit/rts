@@ -25,78 +25,6 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 		Status:      1,
 		Menus: []models.SystemMenuModel{
 			{
-				ID:        12,
-				Path:      "/document",
-				Component: "",
-				Name:      "Document",
-				Redirect:  "https://www.typeorm.org/",
-				Meta: &models.SystemMenuMetaModel{
-					Title:       "文档",
-					Icon:        "ion:tv-outline",
-					IsExt:       false,
-					ExtOpenMode: 1,
-					Type:        0,
-					OrderNo:     2,
-					Show:        1,
-					ActiveMenu:  nil,
-					Status:      1,
-					KeepAlive:   0,
-				},
-				Children: []models.SystemMenuModel{
-					{
-						ID:   14,
-						Path: "https://www.typeorm.org/",
-						Name: "Typeorm中文文档(外链)",
-						Meta: &models.SystemMenuMetaModel{
-							Title:       "Typeorm中文文档(外链)",
-							Icon:        "",
-							IsExt:       true,
-							ExtOpenMode: 1,
-							Type:        1,
-							OrderNo:     3,
-							Show:        1,
-							ActiveMenu:  nil,
-							Status:      1,
-							KeepAlive:   0,
-						},
-					},
-					{
-						ID:   15,
-						Path: "https://docs.nestjs.cn/",
-						Name: "Nest.js中文文档(内嵌)",
-						Meta: &models.SystemMenuMetaModel{
-							Title:       "Nest.js中文文档(内嵌)",
-							Icon:        "",
-							IsExt:       true,
-							ExtOpenMode: 2,
-							Type:        1,
-							OrderNo:     4,
-							Show:        1,
-							ActiveMenu:  nil,
-							Status:      1,
-							KeepAlive:   0,
-						},
-					},
-					{
-						ID:   112,
-						Path: "https://antdv.com/components/overview-cn",
-						Name: "antdv文档(内嵌)",
-						Meta: &models.SystemMenuMetaModel{
-							Title:       "antdv文档(内嵌)",
-							Icon:        "",
-							IsExt:       true,
-							ExtOpenMode: 2,
-							Type:        1,
-							OrderNo:     255,
-							Show:        1,
-							ActiveMenu:  nil,
-							Status:      1,
-							KeepAlive:   0,
-						},
-					},
-				},
-			},
-			{
 				ID:        1,
 				Path:      "/system",
 				Component: "",
@@ -118,11 +46,29 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 					{
 						ID:        2,
 						Path:      "/system/user",
-						Name:      "用户管理",
+						Name:      "User Management",
 						Component: "system/user/index",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "用户管理",
+							Title:       "User Management",
 							Icon:        "ant-design:user-outlined",
+							IsExt:       false,
+							ExtOpenMode: 1,
+							Type:        1,
+							OrderNo:     0,
+							Show:        1,
+							ActiveMenu:  nil,
+							Status:      1,
+							KeepAlive:   0,
+						},
+					},
+					{
+						ID:        2,
+						Path:      "/system/group",
+						Name:      "Group Management",
+						Component: "system/group/index",
+						Meta: &models.SystemMenuMetaModel{
+							Title:       "Group Management",
+							Icon:        "ant-design:group-outlined",
 							IsExt:       false,
 							ExtOpenMode: 1,
 							Type:        1,
@@ -136,10 +82,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 					{
 						ID:        3,
 						Path:      "/system/role",
-						Name:      "角色管理",
+						Name:      "Role Management",
 						Component: "system/role/index",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "角色管理",
+							Title:       "Role Management",
 							Icon:        "ep:user",
 							IsExt:       false,
 							ExtOpenMode: 1,
@@ -154,10 +100,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 					{
 						ID:        4,
 						Path:      "/system/menu",
-						Name:      "菜单管理",
+						Name:      "Menu Management",
 						Component: "system/menu/index",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "菜单管理",
+							Title:       "Menu Management",
 							Icon:        "ep:menu",
 							IsExt:       false,
 							ExtOpenMode: 1,
@@ -172,10 +118,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 					{
 						ID:        61,
 						Path:      "/system/dept",
-						Name:      "部门管理",
+						Name:      "Department Management",
 						Component: "system/dept/index",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "部门管理",
+							Title:       "Department Management",
 							Icon:        "ant-design:deployment-unit-outlined",
 							IsExt:       false,
 							ExtOpenMode: 1,
@@ -190,10 +136,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 					{
 						ID:        56,
 						Path:      "/system/dict-type",
-						Name:      "字典管理",
+						Name:      "Dictionary Management",
 						Component: "system/dict-type/index",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "字典管理",
+							Title:       "Dictionary Management",
 							Icon:        "ant-design:book-outlined",
 							IsExt:       false,
 							ExtOpenMode: 1,
@@ -209,9 +155,9 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 						ID:        5,
 						Path:      "/system/monitor",
 						Component: "",
-						Name:      "系统监控",
+						Name:      "System Monitoring",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "系统监控",
+							Title:       "System Monitoring",
 							Icon:        "ep:monitor",
 							IsExt:       false,
 							ExtOpenMode: 1,
@@ -227,10 +173,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 							{
 								ID:        6,
 								Path:      "/system/monitor/online",
-								Name:      "在线用户",
+								Name:      "Online User",
 								Component: "system/monitor/online/index",
 								Meta: &models.SystemMenuMetaModel{
-									Title:       "在线用户",
+									Title:       "Online User",
 									Icon:        "",
 									IsExt:       false,
 									ExtOpenMode: 1,
@@ -245,10 +191,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 							{
 								ID:        7,
 								Path:      "/sys/monitor/login-log",
-								Name:      "登录日志",
+								Name:      "Login Log",
 								Component: "system/monitor/log/login/index",
 								Meta: &models.SystemMenuMetaModel{
-									Title:       "登录日志",
+									Title:       "Login Log",
 									Icon:        "",
 									IsExt:       false,
 									ExtOpenMode: 1,
@@ -263,10 +209,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 							{
 								ID:        68,
 								Path:      "/health",
-								Name:      "健康检查",
+								Name:      "Health Examination",
 								Component: "",
 								Meta: &models.SystemMenuMetaModel{
-									Title:       "健康检查",
+									Title:       "Health Examination",
 									Icon:        "",
 									IsExt:       false,
 									ExtOpenMode: 1,
@@ -281,10 +227,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 							{
 								ID:        8,
 								Path:      "/system/monitor/serve",
-								Name:      "服务监控",
+								Name:      "Service Monitoring",
 								Component: "system/monitor/serve/index",
 								Meta: &models.SystemMenuMetaModel{
-									Title:       "服务监控",
+									Title:       "Service Monitoring",
 									Icon:        "",
 									IsExt:       false,
 									ExtOpenMode: 1,
@@ -302,9 +248,9 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 						ID:        9,
 						Path:      "/system/schedule",
 						Component: "",
-						Name:      "任务调度",
+						Name:      "Task Scheduling",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "任务调度",
+							Title:       "Task Scheduling",
 							Icon:        "ant-design:schedule-filled",
 							IsExt:       false,
 							ExtOpenMode: 1,
@@ -320,10 +266,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 							{
 								ID:        10,
 								Path:      "/system/task",
-								Name:      "任务管理",
+								Name:      "Task Management",
 								Component: "system/schedule/task/index",
 								Meta: &models.SystemMenuMetaModel{
-									Title:       "任务管理",
+									Title:       "Task Management",
 									Icon:        "",
 									IsExt:       false,
 									ExtOpenMode: 1,
@@ -338,10 +284,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 							{
 								ID:        11,
 								Path:      "/system/task/log",
-								Name:      "任务日志",
+								Name:      "Mission Log",
 								Component: "system/schedule/log/index",
 								Meta: &models.SystemMenuMetaModel{
-									Title:       "任务日志",
+									Title:       "Mission Log",
 									Icon:        "",
 									IsExt:       false,
 									ExtOpenMode: 1,
@@ -358,10 +304,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 					{
 						ID:        107,
 						Path:      "system/dict-item/:id",
-						Name:      "字典项管理",
+						Name:      "Dictionary Item Management",
 						Component: "system/dict-item/index",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "字典项管理",
+							Title:       "Dictionary Item Management",
 							Icon:        "ant-design:facebook-outlined",
 							IsExt:       false,
 							ExtOpenMode: 1,
@@ -376,10 +322,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 					{
 						ID:        86,
 						Path:      "/param-config",
-						Name:      "参数配置",
+						Name:      "Parameter Configuration",
 						Component: "system/param-config/index",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "参数配置",
+							Title:       "Parameter Configuration",
 							Icon:        "ep:edit",
 							IsExt:       false,
 							ExtOpenMode: 1,
@@ -397,9 +343,9 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 				ID:        48,
 				Path:      "/tool",
 				Component: "",
-				Name:      "系统工具",
+				Name:      "System Tool",
 				Meta: &models.SystemMenuMetaModel{
-					Title:       "系统工具",
+					Title:       "System Tool",
 					Icon:        "ant-design:tool-outlined",
 					IsExt:       false,
 					ExtOpenMode: 1,
@@ -415,10 +361,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 					{
 						ID:        49,
 						Path:      "/tool/email",
-						Name:      "邮件工具",
+						Name:      "Email Tool",
 						Component: "tool/email/index",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "邮件工具",
+							Title:       "Email Tool",
 							Icon:        "ant-design:send-outlined",
 							IsExt:       false,
 							ExtOpenMode: 1,
@@ -433,10 +379,10 @@ func (c *systemControllerImpl) GetSystemInfo(ctx echo.Context) error {
 					{
 						ID:        51,
 						Path:      "/tool/storage",
-						Name:      "存储管理",
+						Name:      "Storage Management",
 						Component: "tool/storage/index",
 						Meta: &models.SystemMenuMetaModel{
-							Title:       "存储管理",
+							Title:       "Storage Management",
 							Icon:        "ant-design:appstore-outlined",
 							IsExt:       false,
 							ExtOpenMode: 1,

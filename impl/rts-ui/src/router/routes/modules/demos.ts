@@ -14,14 +14,14 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
-        path: 'custom-modal',
+        path: 'group',
         name: `${moduleName}-custom-modal`,
         meta: {
           title: t('routes.demo.modal'),
           icon: 'ant-design:desktop-outlined',
           keepAlive: false,
         },
-        component: () => import('@/views/demos/custom-modal.vue'),
+        component: () => import('@/views/system/group/index.vue'),
       },
       {
         path: 'button',

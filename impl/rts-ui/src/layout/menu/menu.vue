@@ -27,7 +27,7 @@
 
   const props = defineProps({
     collapsed: {
-      // 侧边栏菜单是否收起
+      // Whether the sidebar menu is closed
       type: Boolean,
     },
     theme: {
@@ -36,7 +36,7 @@
   });
   const userStore = useUserStore();
   const layoutSettingStore = useLayoutSettingStore();
-  // 当前路由
+  // current route
   const currentRoute = useRoute();
   const router = useRouter();
   const state = reactive({
@@ -45,16 +45,15 @@
   });
 
   const menus = computed(() => userStore.menus);
-  // console.log('menus', menus.value);
-  /** 侧边栏布局 */
+  /** Sidebar layout */
   const isSideMenu = computed(() => layoutSettingStore.layoutSetting.layout === 'sidemenu');
   const getRouteByName = (name: string) => router.getRoutes().find((n) => n.name === name);
-  // 根据activeMenu获取指定的menu
+  //Get the specified menu based on activeMenu
   const getTargetMenuByActiveMenuName = (activeMenu: string) => {
     return router.getRoutes().find((n) => [n.name, n.path].includes(activeMenu));
   };
 
-  // 获取当前打开的子菜单
+  // Get the currently opened submenu
   const getOpenKeys = () => {
     const meta = currentRoute.meta;
     if (meta?.activeMenu) {
@@ -69,7 +68,7 @@
     ) as string[];
   };
 
-  // 监听菜单收缩状态
+  // Monitor menu shrink status
   watch(
     () => props.collapsed,
     (newVal) => {
@@ -78,7 +77,7 @@
     },
   );
 
-  // 跟随页面路由变化，切换菜单选中状态
+  // Follow the page routing changes and switch the menu selection state
   watch(
     () => currentRoute.fullPath,
     () => {
@@ -97,7 +96,7 @@
     },
   );
 
-  // 点击菜单
+  // click menu
   const clickMenuItem = ({ key }) => {
     if (key === currentRoute.name) return;
     const preSelectedKeys = state.selectedKeys;

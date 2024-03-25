@@ -12,25 +12,25 @@ export const getAvatarUrl = (path: string) => {
 
 export const baseColumns: TableColumnItem[] = [
   {
-    title: '头像',
+    title: 'Avatar',
     width: 80,
     dataIndex: 'avatar',
     hideInSearch: true,
     customRender: ({ record }) => <Avatar src={getAvatarUrl(record.avatar)} />,
   },
   {
-    title: '用户名',
+    title: 'UserName',
     width: 120,
     dataIndex: 'username',
   },
   {
-    title: '呢称',
+    title: 'Nickname',
     width: 120,
     hideInSearch: true,
     dataIndex: 'nickname',
   },
   {
-    title: '所在部门',
+    title: 'Department',
     dataIndex: 'dept',
     hideInSearch: true,
     width: 180,
@@ -39,7 +39,7 @@ export const baseColumns: TableColumnItem[] = [
     },
   },
   {
-    title: '所属角色',
+    title: 'Role',
     dataIndex: 'roleNames',
     hideInSearch: true,
     width: 220,
@@ -54,22 +54,22 @@ export const baseColumns: TableColumnItem[] = [
     ),
   },
   {
-    title: '邮箱',
+    title: 'Email',
     width: 120,
     dataIndex: 'email',
   },
   {
-    title: '手机',
+    title: 'Phone',
     width: 120,
     dataIndex: 'phone',
   },
   {
-    title: '备注',
+    title: 'Remark',
     width: 120,
     dataIndex: 'remark',
   },
   {
-    title: '状态',
+    title: 'Status',
     dataIndex: 'status',
     width: 100,
     hideInSearch: true,
@@ -78,11 +78,11 @@ export const baseColumns: TableColumnItem[] = [
       componentProps: {
         options: [
           {
-            label: '启用',
+            label: 'Enable',
             value: 1,
           },
           {
-            label: '禁用',
+            label: 'Disable',
             value: 0,
           },
         ],
@@ -94,7 +94,7 @@ export const baseColumns: TableColumnItem[] = [
     },
   },
   {
-    title: '创建时间',
+    title: 'Created At',
     dataIndex: 'createdAt',
     width: 120,
     hideInSearch: true,
@@ -103,7 +103,7 @@ export const baseColumns: TableColumnItem[] = [
     },
   },
   {
-    title: '修改时间',
+    title: 'Updated At',
     dataIndex: 'updatedAt',
     width: 120,
     hideInSearch: true,

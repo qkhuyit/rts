@@ -1,25 +1,25 @@
 import type { ModalProps } from 'ant-design-vue';
 
-// 普通模态框
+// Ordinary modal box
 export interface HookModalProps extends Partial<ModalProps> {
-  /** 当前模态框是否处于App.vue上下文中 */
+  /** Whether the current modal box is in the App.vue context */
   isAppChild?: boolean;
   content?: string | JSX.Element | (() => JSX.Element);
   closeModal?: () => void;
 }
 
-// 表单模态框
+// form modal box
 export interface FormModalProps<T extends object = Recordable> extends HookModalProps {
   /**
-   * 接受返回一个boolean，返回 true 会关掉这个弹窗
+   * Accept returns a boolean. Returning true will close the pop-up window.
    *
-   * @name 表单结束后调用
+   * @name Called after the form ends
    */
   onFinish?: (formData: Objectable<T>) => Promise<boolean | void>;
   /**
-   * 接受返回一个boolean，返回 true 会关掉这个弹窗
+   * Accept returns a boolean. Returning true will close the pop-up window.
    *
-   * @name 表单验证失败时调用
+   * @name Called when form validation fails
    */
   onFail?: (formData: Objectable<T>) => any;
 }

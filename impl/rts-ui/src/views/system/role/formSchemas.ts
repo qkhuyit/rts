@@ -4,7 +4,7 @@ export const roleSchemas: FormSchema<API.RoleDto>[] = [
   {
     field: 'name',
     component: 'Input',
-    label: '角色名称',
+    label: 'Role Name',
     rules: [{ required: true, type: 'string' }],
     colProps: {
       span: 12,
@@ -13,7 +13,7 @@ export const roleSchemas: FormSchema<API.RoleDto>[] = [
   {
     field: 'value',
     component: 'Input',
-    label: '角色值',
+    label: 'Role Value',
     rules: [{ required: true, type: 'string' }],
     colProps: {
       span: 12,
@@ -21,25 +21,25 @@ export const roleSchemas: FormSchema<API.RoleDto>[] = [
   },
   {
     field: 'status',
-    label: '状态',
+    label: 'Status',
     component: 'RadioGroup',
     defaultValue: 1,
     componentProps: {
       options: [
-        { label: '启用', value: 1 },
-        { label: '停用', value: 0 },
+        { label: 'Active', value: 1 },
+        { label: 'Inactive', value: 0 },
       ],
     },
   },
   {
     field: 'remark',
     component: 'InputTextArea',
-    label: '备注',
+    label: 'Remark',
   },
   {
     field: 'menuIds',
     component: 'Tree',
-    label: '菜单权限',
+    label: 'Permissions',
     componentProps: {
       checkable: true,
       vModelKey: 'checkedKeys',

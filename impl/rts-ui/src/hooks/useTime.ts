@@ -1,19 +1,19 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 /**
- * @description 获取本地时间
+ * @description Get local time
  */
 export function useTime() {
   let timer; // 定时器
-  const year = ref(0); // 年份
-  const month = ref(0); // 月份
-  const week = ref(''); // 星期几
-  const day = ref(0); // 天数
-  const hour = ref<number | string>(0); // 小时
-  const minute = ref<number | string>(0); // 分钟
-  const second = ref(0); // 秒
+  const year = ref(0); // years
+  const month = ref(0); // month
+  const week = ref(''); // Day of the week
+  const day = ref(0); // days
+  const hour = ref<number | string>(0); // Hour
+  const minute = ref<number | string>(0); // minute
+  const second = ref(0); // second
 
-  // 更新时间
+  // Update time
   const updateTime = () => {
     const date = new Date();
     year.value = date.getFullYear();
@@ -28,17 +28,6 @@ export function useTime() {
       new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2 }).format(date.getMinutes());
     second.value = date.getSeconds();
   };
-
-  // 原生时间格式化
-  // new Intl.DateTimeFormat('zh', {
-  //     year: 'numeric',
-  //     month: '2-digit',
-  //     day: '2-digit',
-  //     hour: '2-digit',
-  //     minute: '2-digit',
-  //     second: '2-digit',
-  //     hour12: false
-  // }).format(new Date())
 
   updateTime();
 

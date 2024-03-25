@@ -43,7 +43,7 @@
   const layoutSettingStore = useLayoutSettingStore();
   const { layoutSetting } = storeToRefs(layoutSettingStore);
   const collapsed = ref<boolean>(false);
-  // 自定义侧边栏菜单收缩和展开时的宽度
+  // Customize the width of the sidebar menu when it shrinks and expands
   const asiderWidth = computed(() => (collapsed.value ? 80 : 220));
   const getTheme = computed(() => (layoutSetting.value.navTheme === 'light' ? 'light' : 'dark'));
 </script>

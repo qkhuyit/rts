@@ -48,7 +48,7 @@
       emit('update:value', val);
     },
   });
-  /** 鼠标移入 */
+  /** Mouse move in */
   async function handleMouse(item: RouteRecordRaw) {
     active.value = item.name as string;
   }

@@ -4,20 +4,20 @@ const { defaultAlgorithm, darkAlgorithm } = theme;
 
 export const themeStyle = [
   {
-    label: '亮色主题风格',
+    label: 'Bright theme style',
     value: 'light',
   },
   {
-    label: '暗色主题风格',
+    label: 'Dark theme style',
     value: 'dark',
   },
   {
-    label: '暗黑模式',
+    label: 'Dark mode',
     value: 'realDark',
   },
 ] as const;
 
-/** 主题色 */
+/** theme color */
 export const themeColor = {
   light: defaultAlgorithm,
   dark: defaultAlgorithm,
@@ -25,58 +25,58 @@ export const themeColor = {
 } as const;
 export type ThemeColor = keyof typeof themeColor;
 
-/** 主题色 */
+/** theme color */
 export const themeColors = [
   {
-    title: '拂晓蓝（默认）',
+    title: 'Dawn blue (default)',
     key: 'techBlue',
     value: '#1677FF',
   },
   {
-    title: '薄暮',
+    title: 'Dusk',
     key: 'dust',
     value: '#F5222D',
   },
   {
-    title: '火山',
+    title: 'Volcano',
     key: 'volcano',
     value: '#FA541C',
   },
   {
-    title: '日暮',
+    title: 'Sunset',
     key: 'sunset',
     value: '#FAAD14',
   },
   {
-    title: '明青',
+    title: 'Cyan',
     key: 'cyan',
     value: '#13C2C2',
   },
   {
-    title: '极光绿',
+    title: 'Green',
     key: 'green',
     value: '#52C41A',
   },
   {
-    title: '极客蓝',
+    title: 'Geek Blue',
     key: 'geekblue',
     value: '#2F54EB',
   },
   {
-    title: '酱紫',
+    title: 'Purple',
     key: 'purple',
     value: '#722ED1',
   },
 ] as const;
 
-/** 导航模式（布局方式） */
+/** Navigation mode (layout mode) */
 export const layouts = [
   {
-    label: '侧边菜单布局',
+    label: 'Side menu layout',
     value: 'sidemenu',
   },
   {
-    label: '顶部菜单布局',
+    label: 'Top menu layout',
     value: 'topmenu',
   },
 ] as const;

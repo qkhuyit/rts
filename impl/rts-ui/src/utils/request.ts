@@ -7,25 +7,25 @@ import { useUserStore } from '@/store/modules/user';
 import { useSSEStore } from '@/store/modules/sse';
 
 export interface RequestOptions extends AxiosRequestConfig {
-  /** 是否直接将数据从响应中提取出，例如直接返回 res.data，而忽略 res.code 等信息 */
+  /** Whether to extract data directly from the response, for example, return res.data directly and ignore information such as res.code */
   isReturnResult?: boolean;
-  /** 请求成功是提示信息 */
+  /** The request is successful and the prompt message is */
   successMsg?: string;
-  /** 请求失败是提示信息 */
+  /** The request failed is a prompt message */
   errorMsg?: string;
-  /** 成功时，是否显示后端返回的成功信息 */
+  /** When successful, whether to display the success information returned by the backend */
   showSuccessMsg?: boolean;
-  /** 失败时，是否显示后端返回的失败信息 */
+  /** When failure occurs, whether to display the failure information returned by the backend */
   showErrorMsg?: boolean;
+  /** The type of request header Content-Type (json <-> application/json | form <-> application/x-www-form-urlencoded) */
   requestType?: 'json' | 'form';
 }
 
-const UNKNOWN_ERROR = '未知错误，请重试';
+const UNKNOWN_ERROR = 'Unknown error, please try again !';
 
-/** 真实请求的路径前缀 */
+/** The path prefix of the real request */
 export const baseApiUrl = import.meta.env.VITE_BASE_API_URL;
-/** mock请求路径前缀 */
-// const baseMockUrl = import.meta.env.VITE_MOCK_API;
+
 
 const controller = new AbortController();
 const service = axios.create({
@@ -60,10 +60,10 @@ service.interceptors.response.use(
       if ([1101, 1105].includes(res.code)) {
         // to re-login
         Modal.confirm({
-          title: '警告',
-          content: res.message || '账号异常，您可以取消停留在该页上，或重新登录',
-          okText: '重新登录',
-          cancelText: '取消',
+          title: 'Warning',
+          content: res.message || 'The account is abnormal. You can cancel your stay on this page or log in again.',
+          okText: 'Re-register',
+          cancelText: 'Cancel',
           onOk: () => {
             localStorage.clear();
             window.location.reload();
@@ -83,7 +83,7 @@ service.interceptors.response.use(
   },
   (error) => {
     if (!(error instanceof CanceledError)) {
-      // 处理 422 或者 500 的错误异常提示
+      // Handle 422 or 500 error exception prompts
       const errMsg = error?.response?.data?.message ?? UNKNOWN_ERROR;
       $message.error({ content: errMsg, key: errMsg });
       error.message = errMsg;
@@ -117,7 +117,7 @@ export async function request(_url: string | RequestOptions, _config: RequestOpt
   const url = isString(_url) ? _url : _url.url;
   const config = isString(_url) ? _config : _url;
   try {
-    // 兼容 from data 文件上传的情况
+    // Compatible with from data file upload situation
     const { requestType, isReturnResult = true, ...rest } = config;
 
     const response = (await service.request({
@@ -142,7 +142,7 @@ export async function request(_url: string | RequestOptions, _config: RequestOpt
       }
     }
 
-    // 页面代码需要获取 code，data，message 等信息时，需要将 isReturnResult 设置为 false
+    // When the page code needs to obtain code, data, message and other information, it needs to set isReturnResult to false
     if (!isReturnResult) {
       return data;
     } else {

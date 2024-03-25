@@ -13,17 +13,17 @@ export const baseColumns: TableColumnItem[] = [
     hideInSearch: true,
   },
   {
-    title: '角色名称',
+    title: 'Name',
     width: 200,
     dataIndex: 'name',
   },
   {
-    title: '角色值',
+    title: 'Display Name',
     width: 180,
     dataIndex: 'value',
   },
   {
-    title: '状态',
+    title: 'Status',
     dataIndex: 'status',
     width: 80,
     formItemProps: {
@@ -31,11 +31,11 @@ export const baseColumns: TableColumnItem[] = [
       componentProps: {
         options: [
           {
-            label: '启用',
+            label: 'Active',
             value: 1,
           },
           {
-            label: '禁用',
+            label: 'Inactive',
             value: 0,
           },
         ],
@@ -43,15 +43,15 @@ export const baseColumns: TableColumnItem[] = [
     },
     customRender: ({ record }) => {
       const enable = ~~record.status === 1;
-      return <Tag color={enable ? 'green' : 'red'}>{enable ? '启用' : '停用'}</Tag>;
+      return <Tag color={enable ? 'green' : 'red'}>{enable ? 'Active' : 'Inactive'}</Tag>;
     },
   },
   {
-    title: '备注',
+    title: 'Remark',
     dataIndex: 'remark',
   },
   {
-    title: '创建时间',
+    title: 'Created At',
     dataIndex: 'createdAt',
     hideInSearch: true,
     customRender: ({ record }) => {
@@ -59,7 +59,7 @@ export const baseColumns: TableColumnItem[] = [
     },
   },
   {
-    title: '更新时间',
+    title: 'Updated At',
     dataIndex: 'updatedAt',
     hideInSearch: true,
     customRender: ({ record }) => {

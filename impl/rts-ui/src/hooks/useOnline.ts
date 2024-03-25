@@ -1,7 +1,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 /**
- * @description 用户网络是否可用
+ * @description Is the user network available?
  * */
 export function useOnline() {
   const online = ref(true);
@@ -10,17 +10,17 @@ export function useOnline() {
     online.value = typeof val == 'boolean' ? val : val.target.online;
   };
 
-  // 在页面加载后，设置正确的网络状态
+  // After the page loads, set the correct network status
   navigator.onLine ? showStatus(true) : showStatus(false);
 
   onMounted(() => {
-    // 开始监听网络状态的变化
+    // Start monitoring changes in network status
     window.addEventListener('online', showStatus);
 
     window.addEventListener('offline', showStatus);
   });
   onUnmounted(() => {
-    // 移除监听网络状态的变化
+    // Remove monitoring network status changes
     window.removeEventListener('online', showStatus);
 
     window.removeEventListener('offline', showStatus);

@@ -4,7 +4,6 @@ import (
 	"github.com/qkhuyit/rts/rts-shared/common/pagination"
 	"github.com/qkhuyit/rts/rts-shared/core/entities"
 	"github.com/qkhuyit/rts/rts-shared/core/models"
-	"math"
 )
 
 type UserMapper interface {
@@ -44,10 +43,7 @@ func (u userMapperImpl) MapAllKeycloakEntities2Models(entityList []entities.User
 
 func (u userMapperImpl) MapPagedEntity2Model(paged *pagination.Paged[entities.UserEntity]) *pagination.Paged[*models.UserModel] {
 	return &pagination.Paged[*models.UserModel]{
-		TotalRows: paged.TotalRows,
-		TotalPage: int(math.Ceil(float64(paged.TotalRows) / float64(paged.PageSize))),
-		Rows:      u.MapAllKeycloakEntities2Models(paged.Rows),
-		PageSize:  paged.PageSize,
-		Page:      paged.Page,
+		Items: u.MapAllKeycloakEntities2Models(paged.Items),
+		Meta:  paged.Meta,
 	}
 }
