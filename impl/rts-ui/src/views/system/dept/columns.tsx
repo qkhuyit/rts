@@ -6,18 +6,18 @@ export type TableColumnItem = TableColumn<TableListItem>;
 
 export const baseColumns: TableColumnItem[] = [
   {
-    title: '部门名称',
+    title: 'Department name',
     dataIndex: 'name',
     align: 'left',
   },
   {
-    title: '排序',
+    title: 'Sort',
     dataIndex: 'orderNo',
     width: 50,
     hideInSearch: true,
   },
   {
-    title: '创建时间',
+    title: 'Created At',
     dataIndex: 'createdAt',
     width: 200,
     hideInSearch: true,

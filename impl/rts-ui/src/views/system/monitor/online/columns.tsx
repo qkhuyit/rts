@@ -6,13 +6,13 @@ export type TableListItem = API.OnlineUserInfo;
 
 export const baseColumns: TableColumn<TableListItem>[] = [
   {
-    title: '会话编号',
+    title: 'Session Number',
     dataIndex: 'tokenId',
     ellipsis: true,
     hideInSearch: true,
   },
   {
-    title: '用户名',
+    title: 'UserName',
     dataIndex: 'username',
     customRender: ({ record }) => (
       <div>
@@ -22,28 +22,28 @@ export const baseColumns: TableColumn<TableListItem>[] = [
     ),
   },
   {
-    title: '部门名称',
+    title: 'Department Name',
     dataIndex: 'deptName',
   },
   {
-    title: '登录IP',
+    title: 'Login IP',
     dataIndex: 'ip',
     width: 140,
   },
   {
-    title: '登录地点',
+    title: 'Address',
     dataIndex: 'address',
   },
   {
-    title: '浏览器',
+    title: 'Browser',
     dataIndex: 'browser',
   },
   {
-    title: '操作系统',
+    title: 'Operation System',
     dataIndex: 'os',
   },
   {
-    title: '登录时间',
+    title: 'Time',
     dataIndex: 'time',
     width: 180,
     customRender: ({ record }) => formatToDateTime(record.time),

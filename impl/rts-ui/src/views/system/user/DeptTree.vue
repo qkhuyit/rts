@@ -32,7 +32,7 @@
     });
   };
   /**
-   * 获取部门列表
+   * Get department list
    */
   const fetchDeptList = async () => {
     originDeptTree.value = await Api.systemDept.deptList({});
@@ -41,7 +41,7 @@
   };
 
   /**
-   * 点击部门
+   * Click on department
    */
   const onTreeSelect = (selectedKeys: number[]) => {
     emit('select', selectedKeys[0]);
@@ -57,7 +57,7 @@
     }, defaultKeys);
   };
 
-  /** 展开全部 */
+  /** Expand All */
   const expandAll = () => {
     expandedKeys.value = getAllKeys(deptTree.value);
   };

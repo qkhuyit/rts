@@ -28,7 +28,7 @@
       hideInSearch: true,
     },
     {
-      title: '用户名',
+      title: 'UserName',
       dataIndex: 'username',
       width: 120,
     },
@@ -41,12 +41,12 @@
       },
     },
     {
-      title: '登录地点',
+      title: 'Address',
       dataIndex: 'address',
       width: 80,
     },
     {
-      title: '时间',
+      title: 'Time',
       width: 120,
       dataIndex: 'time',
       customRender({ record }) {
@@ -57,13 +57,13 @@
       },
     },
     {
-      title: '操作系统',
+      title: 'Operating System',
       dataIndex: 'os',
       width: 120,
       hideInSearch: true,
     },
     {
-      title: '浏览器',
+      title: 'Browser',
       dataIndex: 'browser',
       width: 120,
       hideInSearch: true,

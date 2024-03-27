@@ -14,27 +14,27 @@ export const sendSchemas: FormSchema<API.EmailSendDto>[] = [
   {
     field: 'subject',
     component: 'Input',
-    label: '邮件标题',
+    label: 'Subject',
     required: true,
     colProps: { md: 18 },
   },
   {
     field: 'to',
     component: 'Input',
-    label: '收件邮箱',
-    helpMessage: '多个地址英文逗号,隔开',
+    label: 'To',
+    helpMessage: 'Multiple addresses separated by commas',
     componentProps: {
-      placeholder: '请输入邮箱地址,多个地址英文逗号,隔开',
+      placeholder: 'Please enter your email address. Separate multiple addresses with commas.',
     },
     colProps: { md: 18 },
-    rules: [{ type: 'email', required: true, message: '请输入有效的邮箱地址' }],
+    rules: [{ type: 'email', required: true, message: 'please enter a valid email address' }],
   },
   {
     field: 'content',
     component: () => {
       return <TinymceEditor init={initOptions} />;
     },
-    label: '正文',
+    label: 'Content',
     colProps: { md: 18 },
   },
 ];

@@ -25,7 +25,7 @@ export enum UploadResultStatus {
 
 export const baseColumns: TableColumnItem[] = [
   {
-    title: '文件名',
+    title: 'File Name',
     dataIndex: 'name',
     width: 150,
     ellipsis: true,
@@ -45,7 +45,7 @@ export const baseColumns: TableColumnItem[] = [
     },
   },
   {
-    title: '预览图',
+    title: 'Preview',
     dataIndex: 'path',
     width: 150,
     customRender({ record }) {
@@ -53,17 +53,17 @@ export const baseColumns: TableColumnItem[] = [
     },
   },
   {
-    title: '文件后缀',
+    title: 'File Extension',
     dataIndex: 'extName',
     width: 80,
   },
   {
-    title: '类别',
+    title: 'Category',
     dataIndex: 'type',
     width: 80,
   },
   {
-    title: '大小',
+    title: 'Size',
     dataIndex: 'size',
     width: 80,
     customRender: ({ record }) => {
@@ -71,12 +71,12 @@ export const baseColumns: TableColumnItem[] = [
     },
   },
   {
-    title: '上传者',
+    title: 'UserName',
     dataIndex: 'username',
     width: 120,
   },
   {
-    title: '创建时间',
+    title: 'Created At',
     dataIndex: 'createdAt',
     width: 160,
     customRender: ({ record }) => formatToDateTime(record.createdAt),
@@ -86,7 +86,7 @@ export const baseColumns: TableColumnItem[] = [
 export const fileListColumns: TableColumn<FileItem>[] = [
   {
     dataIndex: 'thumbUrl',
-    title: '缩略图',
+    title: 'Thumbnail',
     width: 100,
     customRender: ({ record }) => {
       const { thumbUrl } = record;
@@ -95,7 +95,7 @@ export const fileListColumns: TableColumn<FileItem>[] = [
   },
   {
     dataIndex: 'name',
-    title: '文件名',
+    title: 'File Name',
     align: 'left',
     customRender: ({ text, record }) => {
       const { percent, status: uploadStatus } = record || {};
@@ -119,7 +119,7 @@ export const fileListColumns: TableColumn<FileItem>[] = [
   },
   {
     dataIndex: 'size',
-    title: '文件大小',
+    title: 'File Size',
     width: 100,
     customRender: ({ text = 0 }) => {
       return text && `${(text / 1024).toFixed(2)}KB`;
@@ -127,18 +127,18 @@ export const fileListColumns: TableColumn<FileItem>[] = [
   },
   {
     dataIndex: 'status',
-    title: '状态',
+    title: 'Status',
     width: 100,
     customRender: ({ text }) => {
       if (text === UploadResultStatus.SUCCESS) {
-        return <Tag color="green">上传成功</Tag>;
+        return <Tag color="green">Upload successful</Tag>;
       } else if (text === UploadResultStatus.ERROR) {
-        return <Tag color="red">上传失败</Tag>;
+        return <Tag color="red">Upload failed</Tag>;
       } else if (text === UploadResultStatus.UPLOADING) {
-        return <Tag color="blue">上传中</Tag>;
+        return <Tag color="blue">Uploading</Tag>;
       }
 
-      return text || '待上传';
+      return text || 'To be uploaded';
     },
   },
 ];
@@ -146,7 +146,7 @@ export const fileListColumns: TableColumn<FileItem>[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: '名称',
+    label: 'Name',
     component: 'Input',
     colProps: { span: 8 },
   },

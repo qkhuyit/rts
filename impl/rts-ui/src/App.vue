@@ -16,7 +16,7 @@
   const route = useRoute();
   watchEffect(() => {
     if (route.meta?.title) {
-      // 翻译网页标题
+      // Translate web page title
       document.title = transformI18n(route.meta.title);
     }
   });

@@ -1,14 +1,14 @@
 <template>
-  <DynamicTable header-title="菜单管理" :data-request="Api.systemMenu.menuList" :columns="columns">
+  <DynamicTable header-title="Menu management" :data-request="Api.systemMenu.menuList" :columns="columns">
     <template #afterHeaderTitle>
       <div class="flex gap-2 ml-2">
-        <a-button @click="dynamicTableInstance.expandAll">展开全部</a-button>
-        <a-button @click="dynamicTableInstance.collapseAll">折叠全部</a-button>
+        <a-button @click="dynamicTableInstance.expandAll">Expand All</a-button>
+        <a-button @click="dynamicTableInstance.collapseAll">Collapse all</a-button>
       </div>
     </template>
     <template #toolbar>
       <a-button type="primary" :disabled="!$auth('system:menu:create')" @click="openMenuModal({})">
-        新增
+        New
       </a-button>
     </template>
   </DynamicTable>
@@ -36,10 +36,9 @@
   const openMenuModal = async (record: Partial<TableListItem>) => {
     const [formRef] = await showModal({
       modalProps: {
-        title: `${record.id ? '编辑' : '新增'}菜单`,
+        title: `${record.id ? 'Edit' : 'New'} Menu`,
         width: 700,
         onFinish: async (values) => {
-          console.log('新增/编辑菜单', values);
           record.id && (values.menuId = record.id);
           if (Array.isArray(values.component)) {
             values.component = values.component.join('/');
@@ -80,14 +79,14 @@
   const columns: TableColumnItem[] = [
     ...baseColumns,
     {
-      title: '操作',
+      title: 'Action',
       width: 140,
       dataIndex: 'ACTION',
       hideInSearch: true,
       fixed: 'right',
       actions: ({ record }) => [
         {
-          label: '编辑',
+          label: 'Edit',
           auth: {
             perm: 'system:menu:update',
             effect: 'disable',
@@ -95,7 +94,7 @@
           onClick: () => openMenuModal(record),
         },
         {
-          label: '新增',
+          label: 'New',
           auth: {
             perm: 'system:menu:create',
             effect: 'disable',
@@ -104,10 +103,10 @@
           onClick: () => openMenuModal({ parentId: record.id }),
         },
         {
-          label: '删除',
+          label: 'Delete',
           auth: 'system:menu:delete',
           popConfirm: {
-            title: '你确定要删除吗？',
+            title: 'Are you sure you want to delete ?',
             placement: 'left',
             onConfirm: () => delRowConfirm(record),
           },

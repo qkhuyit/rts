@@ -14,7 +14,7 @@
     labelWidth: 120,
     schemas: sendSchemas,
     submitButtonOptions: {
-      text: '发送邮箱',
+      text: 'Send email',
     },
     actionColOptions: {
       span: 18,
@@ -29,7 +29,7 @@
     // },
     {
       key: '2',
-      name: '发送邮件',
+      name: 'Send email',
     },
   ];
 
@@ -37,7 +37,7 @@
     try {
       loading.value = true;
 
-      await Api.systemEmail.emailSend(values, { successMsg: '发送成功' });
+      await Api.systemEmail.emailSend(values, { successMsg: 'Sent successfully' });
     } finally {
       loading.value = false;
     }
@@ -45,7 +45,7 @@
 </script>
 
 <template>
-  <a-spin :spinning="loading" tip="邮件发送中...">
+  <a-spin :spinning="loading" tip="Email is being sent...">
     <a-card size="small">
       <a-tabs
         tab-position="top"

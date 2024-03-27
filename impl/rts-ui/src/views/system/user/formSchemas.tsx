@@ -97,7 +97,7 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   },
 ];
 /**
- * @description 更新用户密码
+ * @description Update user password
  */
 export const updatePswSchemas: FormSchema[] = [
   {
@@ -108,7 +108,7 @@ export const updatePswSchemas: FormSchema[] = [
   },
 ];
 /**
- * @description 将用户转移部门
+ * @description Transfer users to departments
  */
 export const transferUserSchemas: FormSchema[] = [
   {

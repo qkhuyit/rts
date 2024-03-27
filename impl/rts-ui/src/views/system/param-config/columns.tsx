@@ -13,24 +13,24 @@ export const baseColumns: TableColumnItem[] = [
     width: 60,
   },
   {
-    title: '参数名称',
+    title: 'Name',
     width: 150,
     dataIndex: 'name',
   },
   {
-    title: 'key',
+    title: 'Key',
     dataIndex: 'key',
   },
   {
-    title: 'value',
+    title: 'Value',
     dataIndex: 'value',
   },
   {
-    title: '备注',
+    title: 'Remark',
     dataIndex: 'remark',
   },
   {
-    title: '更新时间',
+    title: 'Updated At',
     dataIndex: 'updatedAt',
     sorter: true,
     width: 160,
@@ -41,7 +41,7 @@ export const baseColumns: TableColumnItem[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: '名称',
+    label: 'Name',
     component: 'Input',
     colProps: { span: 8 },
   },

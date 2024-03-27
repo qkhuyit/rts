@@ -2,7 +2,7 @@
   <div>
     <DynamicTable
       row-key="id"
-      header-title="参数配置"
+      header-title="Parameter configuration"
       :data-request="Api.systemParamConfig.paramConfigList"
       :columns="columns"
       bordered
@@ -46,15 +46,14 @@
   const [showModal] = useFormModal();
 
   /**
-   * @description 打开新增/编辑弹窗
+   * @description Open the new/edit popup window
    */
   const openMenuModal = async (record: Partial<TableListItem>) => {
     const [formRef] = await showModal({
       modalProps: {
-        title: `${record.id ? '编辑' : '新增'}字典`,
+        title: `${record.id ? 'Edit' : 'New'} Dictionary`,
         width: '50%',
         onFinish: async (values) => {
-          console.log('新增/编辑字典', values);
           if (record.id) {
             await Api.systemParamConfig.paramConfigUpdate({ id: record.id }, values);
           } else {
@@ -81,14 +80,14 @@
   const columns: TableColumnItem[] = [
     ...baseColumns,
     {
-      title: '操作',
+      title: 'Action',
       width: 130,
       dataIndex: 'ACTION',
       hideInSearch: true,
       fixed: 'right',
       actions: ({ record }) => [
         {
-          label: '编辑',
+          label: 'Edit',
           auth: {
             perm: 'system:param-config:update',
             effect: 'disable',
@@ -96,10 +95,10 @@
           onClick: () => openMenuModal(record),
         },
         {
-          label: '删除',
+          label: 'Delete',
           auth: 'system:param-config:delete',
           popConfirm: {
-            title: '你确定要删除吗？',
+            title: 'Are you sure you want to delete ?',
             placement: 'left',
             onConfirm: () => delRowConfirm(record),
           },

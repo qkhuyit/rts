@@ -1,6 +1,6 @@
 <template>
   <DynamicTable
-    header-title="任务日志"
+    header-title="Mission log"
     :data-request="Api.systemLog.logTaskList"
     :search="false"
     :columns="columns"
@@ -34,9 +34,9 @@
   const getStatusTip = (status) => {
     switch (status) {
       case 0:
-        return '失败';
+        return 'Fail';
       case 1:
-        return '成功';
+        return 'Success';
     }
   };
 
@@ -48,28 +48,28 @@
       hideInSearch: true,
     },
     {
-      title: '任务编号',
+      title: 'Task number',
       dataIndex: ['task', 'id'],
       width: 80,
     },
     {
-      title: '任务名称',
+      title: 'Mission name',
       dataIndex: ['task', 'name'],
       width: 140,
     },
     {
-      title: '异常信息',
+      title: 'Exception information',
       dataIndex: 'detail',
       customRender: ({ record }) => record.detail ?? '无',
     },
     {
-      title: '耗时',
+      title: 'Time consuming',
       dataIndex: 'consumeTime',
       width: 80,
       customRender: ({ record }) => <Tag>{record.consumeTime}ms</Tag>,
     },
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'status',
       width: 100,
       customRender: ({ record }) => {
@@ -78,7 +78,7 @@
       },
     },
     {
-      title: '执行时间',
+      title: 'Created At',
       dataIndex: 'createdAt',
       width: 165,
       customRender: ({ record }) => {

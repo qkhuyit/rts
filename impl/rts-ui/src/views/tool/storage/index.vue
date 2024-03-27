@@ -2,7 +2,7 @@
   <div>
     <DynamicTable
       row-key="id"
-      header-title="存储管理"
+      header-title="Storage management"
       :data-request="Api.toolsStorage.storageList"
       :columns="baseColumns"
       bordered
@@ -11,13 +11,13 @@
       <template #toolbar>
         <UploadModal @upload-success="handleUploadSuccess" />
         <a-popconfirm
-          title="你确定要删除这些数据吗?"
-          ok-text="确定"
-          cancel-text="取消"
+          title="Are you sure you want to delete this data ?"
+          ok-text="OK"
+          cancel-text="Cancel"
           @confirm="handleDelete"
         >
           <a-button :disabled="!$auth('tool:storage:delete') || !checkedKeys.length" type="error">
-            删除
+            Delete
           </a-button>
         </a-popconfirm>
       </template>

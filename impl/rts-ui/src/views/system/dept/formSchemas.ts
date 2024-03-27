@@ -6,13 +6,13 @@ export const roleSchemas: FormSchema<API.DeptDto>[] = [
   {
     field: 'name',
     component: 'Input',
-    label: '部门名称',
+    label: 'Department Name',
     rules: [{ required: true, type: 'string' }],
   },
   {
     field: 'parentId',
     component: 'TreeSelect',
-    label: '上级部门',
+    label: 'Higher office',
     componentProps: {
       fieldNames: {
         label: 'name',
@@ -31,7 +31,7 @@ export const roleSchemas: FormSchema<API.DeptDto>[] = [
   },
   {
     field: 'orderNo',
-    label: '排序',
+    label: 'Sort',
     component: 'InputNumber',
     required: true,
     componentProps: {

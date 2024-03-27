@@ -1,14 +1,14 @@
 <template>
   <div class="sys-server-stat-container">
     <!-- runtime -->
-    <Card class="stat-card" title="运行环境">
+    <Card class="stat-card" title="Operating Environment">
       <Descriptions :column="1" :label-style="{ width: '50%' }">
-        <Descriptions.Item label="操作系统">{{ runtime.os }}</Descriptions.Item>
-        <Descriptions.Item label="系统架构">{{ runtime.arch }}</Descriptions.Item>
-        <Descriptions.Item label="Node版本">
+        <Descriptions.Item label="Operating System">{{ runtime.os }}</Descriptions.Item>
+        <Descriptions.Item label="System Structure">{{ runtime.arch }}</Descriptions.Item>
+        <Descriptions.Item label="Node version">
           <Tag color="processing" size="small">v{{ runtime.nodeVersion }}</Tag>
         </Descriptions.Item>
-        <Descriptions.Item label="NPM版本">
+        <Descriptions.Item label="NPM version">
           <Tag color="processing" size="small">v{{ runtime.npmVersion }}</Tag>
         </Descriptions.Item>
       </Descriptions>
@@ -16,8 +16,8 @@
     <!-- CPU -->
     <Card class="stat-card" title="CPU">
       <Descriptions :column="1" :label-style="{ width: '50%' }" :content-style="{ width: '50%' }">
-        <Descriptions.Item label="详细">{{ parseCpuInfo }}</Descriptions.Item>
-        <Descriptions.Item label="负载">
+        <Descriptions.Item label="Detailed">{{ parseCpuInfo }}</Descriptions.Item>
+        <Descriptions.Item label="Load">
           <Progress
             :percent="
               formarPercentage(cpu.rawCurrentLoad, cpu.rawCurrentLoadIdle + cpu.rawCurrentLoad)
@@ -28,7 +28,7 @@
         <Descriptions.Item
           v-for="(item, index) in cpu.coresLoad"
           :key="index"
-          :label="`核心${index + 1} 负载`"
+          :label="`Core ${index + 1} load`"
         >
           <Progress
             :percent="formarPercentage(item.rawLoad, item.rawLoad + item.rawLoadIdle)"
@@ -38,12 +38,12 @@
       </Descriptions>
     </Card>
     <!-- disk -->
-    <Card class="stat-card" title="磁盘">
+    <Card class="stat-card" title="Disk">
       <div class="disk-info">
         <Descriptions class="disk-info--item" :column="1">
-          <Descriptions.Item label="总空间">{{ formatDiskUnit.size }}</Descriptions.Item>
-          <Descriptions.Item label="已用空间">{{ formatDiskUnit.used }}</Descriptions.Item>
-          <Descriptions.Item label="可用空间">{{ formatDiskUnit.available }}</Descriptions.Item>
+          <Descriptions.Item label="Total Space">{{ formatDiskUnit.size }}</Descriptions.Item>
+          <Descriptions.Item label="Used space">{{ formatDiskUnit.used }}</Descriptions.Item>
+          <Descriptions.Item label="Available space">{{ formatDiskUnit.available }}</Descriptions.Item>
         </Descriptions>
         <div class="disk-info--item">
           <Progress
@@ -56,12 +56,12 @@
       </div>
     </Card>
     <!-- memoty -->
-    <Card class="stat-card" title="内存">
+    <Card class="stat-card" title="Memory">
       <div class="disk-info">
         <Descriptions class="disk-info--item" :column="1">
-          <Descriptions.Item label="总内存">{{ formatMemoryUnit.total }}</Descriptions.Item>
-          <Descriptions.Item label="已用内存">{{ formatMemoryUnit.used }}</Descriptions.Item>
-          <Descriptions.Item label="可用内存">{{ formatMemoryUnit.free }}</Descriptions.Item>
+          <Descriptions.Item label="Total">{{ formatMemoryUnit.total }}</Descriptions.Item>
+          <Descriptions.Item label="Used">{{ formatMemoryUnit.used }}</Descriptions.Item>
+          <Descriptions.Item label="Available">{{ formatMemoryUnit.free }}</Descriptions.Item>
         </Descriptions>
         <div class="disk-info--item">
           <Progress

@@ -76,7 +76,7 @@
     },
   });
 
-  // 是否勾选了表格行
+  // Whether the table row is checked
   const isCheckRows = computed(() => rowSelection.value.selectedRowKeys.length);
 
   const loadTableData = async (params: LoadDataParams) => {
@@ -89,7 +89,7 @@
   };
 
   /**
-   * @description 打开操作用户弹窗
+   * @description Open the operating user pop-up window
    */
   const openUserModal = async (record: Partial<TableListItem> = {}) => {
     const { userCreate, userUpdate } = Api.systemUser;
@@ -153,13 +153,13 @@
   };
 
   /**
-   * @description 表格删除行
+   * @description table delete row
    */
   const delRowConfirm = async (userId: number | number[]) => {
     const { userDelete } = Api.systemUser;
     if (Array.isArray(userId)) {
       Modal.confirm({
-        title: '确定要删除所选的用户吗?',
+        title: 'Are you sure you want to delete the selected user ?',
         icon: <ExclamationCircleOutlined />,
         centered: true,
         onOk: async () => {
@@ -183,14 +183,14 @@
   const columns: TableColumnItem[] = [
     ...baseColumns,
     {
-      title: '操作',
+      title: 'Action',
       width: 80,
       dataIndex: 'ACTION',
       fixed: 'right',
       actions: ({ record }) => [
         {
           icon: 'ant-design:edit-outlined',
-          tooltip: '编辑用户资料',
+          tooltip: 'Edit user profile',
           auth: {
             perm: 'system:user:update',
             effect: 'disable',
@@ -200,10 +200,10 @@
         {
           icon: 'ant-design:delete-outlined',
           color: 'red',
-          tooltip: '删除此账号',
+          tooltip: 'Delete this account',
           auth: 'system:user:delete',
           popConfirm: {
-            title: '你确定要删除吗？',
+            title: 'Are you sure you want to delete ?',
             placement: 'left',
             onConfirm: () => delRowConfirm(record.id),
           },

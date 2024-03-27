@@ -2,13 +2,13 @@
 /* eslint-disable */
 
 declare namespace API {
-  /** 全局通过表格查询返回结果 */
+  /** Globally return results through table query */
   type TableListResult<T = any> = {
     items?: T;
     meta?: PaginationResult;
   };
 
-  /** 全局通用表格分页返回数据结构 */
+  /** Global common table paging return data structure */
   type PaginationResult = {
     itemCount?: number;
     totalItems?: number;
@@ -17,7 +17,7 @@ declare namespace API {
     currentPage?: number;
   };
 
-  /** 全局通用表格分页请求参数 */
+  /** Global common form paging request parameters */
   type PageParams<T = any> = {
     page?: number;
     pageSize?: number;
@@ -26,11 +26,11 @@ declare namespace API {
   };
 
   type ErrorResponse = {
-    /** 业务约定的错误码 */
+    /** Business agreed error code */
     errorCode: string;
-    /** 业务上的错误信息 */
+    /** Business error messages */
     errorMessage?: string;
-    /** 业务上的请求是否成功 */
+    /** Is the business request successful? */
     success?: boolean;
   };
 }

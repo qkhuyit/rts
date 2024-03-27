@@ -45,7 +45,7 @@
   };
 
   /**
-   * @description 打开新增/编辑弹窗
+   * @description Open the new/edit popup window
    */
   const openMenuModal = async (record: Partial<TableListItem>) => {
     const [formRef] = await showModal({

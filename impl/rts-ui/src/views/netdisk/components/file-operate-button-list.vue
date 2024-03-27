@@ -1,10 +1,10 @@
 <template>
   <Space>
     <a-button v-if="copyMode || cutMode" :disabled="disabledPasteButton" @click="handlePaste">
-      <DeliveredProcedureOutlined />粘贴
+      <DeliveredProcedureOutlined />Paste
     </a-button>
     <Dropdown size="small">
-      <Tooltip title="注意：复制或剪切时会覆盖重名文件" placement="top">
+      <Tooltip title="Note: Files with the same name will be overwritten when copying or cutting." placement="top">
         <a-button color="#e6a23c" :disabled="disabledMultiOperateButton">
           <template #icon><MenuOutlined /></template>
           Batch Action

@@ -4,13 +4,13 @@ export const baseSchemas: FormSchema<API.ParamConfigDto>[] = [
   {
     field: 'name',
     component: 'Input',
-    label: '参数名称',
+    label: 'Name',
     rules: [{ required: true, type: 'string' }],
   },
   {
     field: 'key',
     component: 'Input',
-    label: 'key',
+    label: 'Key',
     colProps: {
       span: 24,
     },
@@ -19,7 +19,7 @@ export const baseSchemas: FormSchema<API.ParamConfigDto>[] = [
   {
     field: 'value',
     component: 'Input',
-    label: 'value',
+    label: 'Value',
     colProps: {
       span: 24,
     },
@@ -28,7 +28,7 @@ export const baseSchemas: FormSchema<API.ParamConfigDto>[] = [
   {
     field: 'remark',
     component: 'InputTextArea',
-    label: '备注',
+    label: 'Remark',
     colProps: {
       span: 24,
     },

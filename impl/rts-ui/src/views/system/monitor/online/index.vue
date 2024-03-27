@@ -1,8 +1,8 @@
 <template>
   <DynamicTable
     row-key="tokenId"
-    header-title="在线用户"
-    title-tooltip="这是真实操作，请不要随意将其他用户踢下线。"
+    header-title="Online User"
+    title-tooltip="This is a real operation, please do not kick other users offline at will."
     :data-source="list"
     :columns
     :loading
@@ -13,8 +13,8 @@
     <template #toolbar>
       <a-switch
         v-model:checked="realTimeUpdate"
-        checked-children="开启实时更新"
-        un-checked-children="关闭实时更新"
+        checked-children="Enable real-time updates"
+        un-checked-children="Turn off real-time updates"
       />
     </template>
   </DynamicTable>
@@ -42,16 +42,16 @@
   const columns: TableColumn<TableListItem>[] = [
     ...baseColumns,
     {
-      title: '操作',
+      title: 'Action',
       width: 80,
       dataIndex: 'ACTION',
       actions: ({ record }) => [
         {
-          label: '下线',
+          label: 'Offline',
           auth: 'system:online:kick',
           disabled: record.disable,
           popConfirm: {
-            title: '确定下线该用户吗?',
+            title: 'Are you sure you want to log this user offline?',
             onConfirm: () => handleKick(record),
           },
         },

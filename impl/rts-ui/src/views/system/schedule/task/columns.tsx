@@ -16,20 +16,20 @@ const getStatusColor = (status) => {
 const getStatusInfo = (status) => {
   switch (status) {
     case 0:
-      return '停止';
+      return 'Stop';
     case 1:
-      return '运行';
+      return 'Run';
   }
 };
 
 export const baseColumns: TableColumnItem[] = [
   {
-    title: '任务名称',
+    title: 'Name',
     dataIndex: 'name',
     width: 180,
   },
   {
-    title: '状态',
+    title: 'Status',
     width: 100,
     dataIndex: 'status',
 
@@ -42,7 +42,7 @@ export const baseColumns: TableColumnItem[] = [
     ),
   },
   {
-    title: '类型',
+    title: 'Type',
     width: 80,
     dataIndex: 'type',
     customRender: ({ record }) => (
@@ -50,19 +50,19 @@ export const baseColumns: TableColumnItem[] = [
     ),
   },
   {
-    title: '调用服务',
+    title: 'Service',
     dataIndex: 'service',
     hideInSearch: true,
     width: 220,
   },
   {
-    title: '执行参数',
+    title: 'Data',
     dataIndex: 'data',
     hideInSearch: true,
     width: 220,
   },
   {
-    title: '备注',
+    title: 'Remark',
     dataIndex: 'remark',
   },
 ];

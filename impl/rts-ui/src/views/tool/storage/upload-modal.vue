@@ -5,17 +5,17 @@
 
   <DraggableModal
     v-model:open="visible"
-    title="上传"
+    title="Upload"
     :width="800"
-    ok-text="开始上传"
+    ok-text="Start upload"
     :ok-button-props="{ disabled: disabledUpload }"
     @ok="onOk"
     @cancel="onCancel"
   >
     <a-flex justify="space-between" align="center">
-      <a-alert message="单个文件不超过2MB，最多只能上传10个文件" type="info" show-icon />
+      <a-alert message="A single file should not exceed 2MB, and a maximum of 10 files can be uploaded." type="info" show-icon />
       <a-upload :multiple="true" :before-upload="beforeUpload" :show-upload-list="false">
-        <a-button type="primary"> 选择文件 </a-button>
+        <a-button type="primary"> Select a document </a-button>
       </a-upload>
     </a-flex>
 
@@ -89,7 +89,7 @@
 
   const beforeUpload: UploadProps['beforeUpload'] = async (file) => {
     if (file.size / 1024 / 1024 > 2) {
-      message.error('单个文件不超过2MB');
+      message.error('A single file should not exceed 2MB');
     } else {
       const item: FileItem = {
         file,
@@ -114,12 +114,12 @@
     ...fileListColumns,
     {
       width: 120,
-      title: '操作',
+      title: 'Action',
       dataIndex: 'ACTION',
       fixed: false,
       actions: ({ record }) => [
         {
-          label: '删除',
+          label: 'Delete',
           color: 'red',
           onClick: () => handleRemove(record),
         },

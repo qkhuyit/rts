@@ -10,30 +10,30 @@ import { setupAntd, setupAssets, setupGlobalMethods } from '@/plugins';
 const app = createApp(App);
 
 function setupPlugins() {
-  // 安装图标
+  // installation icon
   setupIcons();
-  // 注册全局常用的ant-design-vue组件
+  // Register globally commonly used ant-design-vue components
   setupAntd(app);
-  // 引入静态资源
+  // Introduce static resources
   setupAssets();
-  // 注册全局方法，如：app.config.globalProperties.$message = message
+  // Register global methods, such as: app.config.globalProperties.$message = message
   setupGlobalMethods(app);
 }
 
 async function setupApp() {
-  // 通过动态import可生成单独的chunk，结合全局替换变量，可实现按需加载，且不会对代码打包体积造成影响
+  // Separate chunks can be generated through dynamic import, and combined with global replacement variables, on-demand loading can be achieved without affecting the code packaging volume.
   if (import.meta.env.VITE_MOCK_IN_PROD === 'true') {
     const { setupMock } = await import('../mocks/');
-    // 启用 mock
+    // enable mock
     await setupMock();
   }
 
-  // 挂载vuex状态管理
+  // Mount vuex state management
   setupStore(app);
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side
   await setupI18n(app);
-  // 挂载路由
+  // Mount route
   await setupRouter(app);
 
   app.mount('#app');
