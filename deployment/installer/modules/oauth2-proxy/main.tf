@@ -12,7 +12,7 @@ resource "helm_release" "oauth2-proxy" {
 
   set {
     name    = "configuration.clientSecret"
-    value   = "WUalMBSR6kllneJi2Od9ni9nGhOIHe6E"
+    value   = "GzJH982Fl83mStbC3Sts9h2mOy1c9kp9"
   }
 
   # Set configuration content directly (avoid heredoc syntax)

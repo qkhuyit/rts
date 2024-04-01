@@ -60,12 +60,12 @@ ingress:
   #      - chart-example.local
 
 keycloak:
-  clientID: "admin-cli"
-  clientSecret: "TLNBWXJhpBE2xtnERZvADddKwq11VhG7"
-  password: "Asd123$$"
-  realm: "rts"
-  url: "http://rts-auth-keycloak.rts-auth"
-  username: "administrator"
+  clientID: ""
+  clientSecret: ""
+  password: ""
+  realm: ""
+  url: ""
+  username: ""
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

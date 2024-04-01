@@ -17,4 +17,34 @@ resource "helm_release" "rts-api" {
     name  = "image.pullPolicy"
     value = "Always"
   }
+
+  set {
+    name  = "keycloak.clientSecret"
+    value = "DnPzaO7yNHl52byqGWe6lm2wGsWuZH19"
+  }
+
+  set {
+    name  = "keycloak.username"
+    value = "administrator"
+  }
+
+  set {
+    name  = "keycloak.realm"
+    value = "rts"
+  }
+
+  set {
+    name  = "keycloak.clientID"
+    value = "admin-cli"
+  }
+
+  set {
+    name  = "keycloak.password"
+    value = "Asd123$$"
+  }
+
+  set {
+    name  = "keycloak.url"
+    value = "http://keycloak.rts-auth"
+  }
 }

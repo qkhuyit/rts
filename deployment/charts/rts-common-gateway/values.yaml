@@ -56,7 +56,7 @@ ingress:
           pathType: Prefix
           backend:
             service:
-              name: rts-auth-keycloak
+              name: keycloak
               port:
                 number: 80
     - host: rts.local
@@ -65,7 +65,7 @@ ingress:
           pathType: ImplementationSpecific
           backend:
             service:
-              name: rts-auth-oauth2-proxy
+              name: oauth2-proxy
               port:
                 number: 80
   tls: []

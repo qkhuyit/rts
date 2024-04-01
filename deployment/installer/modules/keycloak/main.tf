@@ -1,5 +1,5 @@
-resource "helm_release" "rts-auth" {
-  name = "rts-auth-keycloak"
+resource "helm_release" "keycloak" {
+  name = "keycloak"
   chart = "../charts/keycloak"
   namespace = var.namespace
 
